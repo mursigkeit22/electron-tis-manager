@@ -1,0 +1,28 @@
+{
+  "name": "tis_manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "Electron"
+
+  ],
+  "author": "Valerie Shelgunova",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^15.0.0"
+  },
+  "dependencies": {
+    "dialog": "^0.3.1",
+    "electron-log": "^4.4.1",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^10.0.0",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "python-shell": "^3.0.0"
+  }
+}

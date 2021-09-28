@@ -1,0 +1,19 @@
+The path module provides utilities for working with file
+and directory paths. It can be accessed using:
+
+const path = require('path');
+when running on a Windows operating system,
+the path module will assume that Windows-style paths are being used.
+
+The path.basename() method returns the last portion of a path
+path.basename('C:\\temp\\myfile.html');
+// Returns: 'myfile.html'
++======================================
+
+https://www.electronjs.org/docs/api/dialog
+
+https://www.electronjs.org/docs/api/ipc-main
+? https://www.electronjs.org/docs/api/ipc-renderer
+альтернатива https://www.npmjs.com/package/@electron/remote
+=====================================
+
