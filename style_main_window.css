@@ -142,20 +142,20 @@ body{
 .btn-group .task-button:hover {
     background-color: #3e8e41;
 }
-/*#reset {*/
-/*    width: 15%;*/
-/*    height:13%;*/
-/*    left: 50%;*/
-/*    outline: none;*/
-/*    border-radius: 10px;*/
-/*    transform: translate(-50%);*/
-/*    position: absolute;*/
-/*    border: 0.5px solid #ff9308;*/
-/*    background-color: #ff9308;*/
-/*    font: 200% "Segoe UI Semilight";*/
-/*    color: #333;*/
-/*    cursor: pointer;*/
-/*}*/
+#reset {
+    width: 15%;
+    height:13%;
+    left: 50%;
+    outline: none;
+    border-radius: 10px;
+    transform: translate(-50%);
+    position: absolute;
+    border: 0.5px solid #ff9308;
+    background-color: #ff9308;
+    font: 200% "Segoe UI Semilight";
+    color: #333;
+    cursor: pointer;
+}
 #wait{
     width: 40%;
     height: 20%;

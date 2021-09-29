@@ -1,6 +1,6 @@
 const {app, BrowserWindow} = require('electron')
 const {ipcMain} = require('electron')
-// const fs = require('fs-extra');
+const fs = require('fs-extra');
 // const electron = require("electron");
 // const Menu = electron.Menu;
 
@@ -12,9 +12,22 @@ let mainWindow
 
 function createWindow() {
     // Create the browser window.
+    const directory = `${__dirname}/tempFiles`;
+    const path = require('path');
 
-    mainWindow = new BrowserWindow({width: 1200, height: 600,
-        backgroundColor: '#2e2c29',
+    fs.readdir(directory, (err, files) => {
+        if (err) throw err;
+
+        for (const file of files) {
+            fs.remove(path.join(directory, file), err => {
+                if (err) throw err;
+            });
+        }
+    });
+
+
+    mainWindow = new BrowserWindow({ width: 1200, height: 600,
+
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -40,8 +53,10 @@ ipcMain.on('synchronous-message', (event, title, message) => {
     console.log(title, message)
     const {dialog}=require('electron')
     dialog.showMessageBox({message: message, title: title})
+    event.returnValue = 'pong'
 
 })
+
 
 
 

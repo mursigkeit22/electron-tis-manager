@@ -10,13 +10,13 @@
 
 <body >
 
-
+<button id="reset" style='display: none;' onclick='arrayFiles.length=0'>New task</button>
 <label id='inputLabel' for="selectFiles">Выберите файлы</label>
 <input type="file" id="selectFiles" multiple accept=".docx"
        onchange="writeFileNames()">
 
 
-  <div class="btn-group">
+  <div class="btn-group" id="leftbuttons">
     <button type="button" class="task-button " >
       Скрыть текст, который не выделен цветом
     </button>
@@ -30,22 +30,18 @@
 <div id="rightbox">
   <div id="nameList"></div>
 </div>
-
+<div id="wait" style='display: none;'>Please wait, this may take a couple of minutes...</div>
 <button id="go">Выполнить</button>
 </body>
 
 
 <script>
+  require('./functions.js');
   let fs = require('fs');
   const logger = require('electron-log');
   const {ipcRenderer} = require('electron')
 
-  function makeLog(name) {
-    logger.info(name);
-  }
-  function writeLog(name) {
-    fs.appendFileSync(`LOGS_JS.txt`, `${name}\n`, 'utf8');
-  }
+
   var globalFileIdNumber = 0;
   var arrayFiles = [];
 
