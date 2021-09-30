@@ -37,25 +37,28 @@
 
 <script>
   require('./functions.js');
+  const utils = require("./js_code/utils")
   let fs = require('fs');
   const logger = require('electron-log');
   const {ipcRenderer} = require('electron')
+  const constants = require("./constants_js");
 
 
   var globalFileIdNumber = 0;
   var arrayFiles = [];
 
+
   function rewrite() {
-    fs.writeFileSync(`${__dirname}/tempFiles/options.args.txt`, '');
+    fs.writeFileSync(`${constants.PATHS.utils_path}options.args.txt`, '');
     for (var el of arrayFiles) {
-      fs.appendFileSync(`${__dirname}/tempFiles/options.args.txt`, el.name);
-      fs.appendFileSync(`${__dirname}/tempFiles/options.args.txt`, '?');
-      fs.appendFileSync(`${__dirname}/tempFiles/options.args.txt`, el.path);
-      fs.appendFileSync(`${__dirname}/tempFiles/options.args.txt`, '?');
+      fs.appendFileSync(`${constants.PATHS.utils_path}options.args.txt`, el.name);
+      fs.appendFileSync(`${constants.PATHS.utils_path}options.args.txt`, '?');
+      fs.appendFileSync(`${constants.PATHS.utils_path}options.args.txt`, el.path);
+      fs.appendFileSync(`${constants.PATHS.utils_path}options.args.txt`, '?');
     }
-    var text = fs.readFileSync(`${__dirname}/tempFiles/options.args.txt`, 'utf8');
+    var text = fs.readFileSync(`${constants.PATHS.utils_path}options.args.txt`, 'utf8');
     text = text.slice(0, -1); // убираем конечный вопросительный знак и перезаписываем
-    fs.writeFileSync(`${__dirname}/tempFiles/options.args.txt`, text);
+    fs.writeFileSync(`${constants.PATHS.utils_path}options.args.txt`, text);
   }
 
   function hideLine(idNum) {
@@ -71,15 +74,19 @@
 
 
   function writeFileNames() {
-    var translatorsFiles = document.getElementById("selectFiles");
+    var uploadedFiles = document.getElementById("selectFiles");
     var txt = document.getElementById("nameList").innerHTML;
 
     var title;
     var message;
-    if ('files' in translatorsFiles) {
-      if (translatorsFiles.files.length > 0) {
+    utils.logToElectron("hop"+uploadedFiles.files) //hop[object FileList]
+    utils.logToElectron("hop"+uploadedFiles.files[0]) //hop[object File]
+    if ('files' in uploadedFiles) {
+      utils.logToElectron("in cycle")
+
+      if (uploadedFiles.files.length > 0) {
         var badNames = [];
-        for (var file of translatorsFiles.files) {
+        for (var file of uploadedFiles.files) {
           globalFileIdNumber++;
           if ('name' in file) {
             if (nameAlreadyInList(file.name)) {

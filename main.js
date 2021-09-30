@@ -1,8 +1,7 @@
 const {app, BrowserWindow} = require('electron')
 const {ipcMain} = require('electron')
 const fs = require('fs-extra');
-// const electron = require("electron");
-// const Menu = electron.Menu;
+const constants = require("./constants_js");
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -11,22 +10,16 @@ let mainWindow
 
 
 function createWindow() {
-    // Create the browser window.
-    const directory = `${__dirname}/tempFiles`;
-    const path = require('path');
 
-    fs.readdir(directory, (err, files) => {
-        if (err) throw err;
+    // create necessary directories
 
-        for (const file of files) {
-            fs.remove(path.join(directory, file), err => {
-                if (err) throw err;
-            });
-        }
-    });
+    fs.ensureDirSync(constants.PATHS.tis_path)
+    fs.ensureDirSync(constants.PATHS.complete_path)
+    fs.ensureDirSync(constants.PATHS.log_path)
+    fs.emptyDirSync(constants.PATHS.utils_path)
 
 
-    mainWindow = new BrowserWindow({ width: 1200, height: 600,
+    mainWindow = new BrowserWindow({ width: 1800, height: 1200,
 
         webPreferences: {
             nodeIntegration: true,
@@ -53,14 +46,9 @@ ipcMain.on('synchronous-message', (event, title, message) => {
     console.log(title, message)
     const {dialog}=require('electron')
     dialog.showMessageBox({message: message, title: title})
-    event.returnValue = 'pong'
+    event.returnValue = null
 
 })
-
-
-
-
-
 
 
 // This method will be called when Electron has finished
@@ -89,5 +77,3 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-var logger = require('electron-log');
-const { dialog } = require('electron')

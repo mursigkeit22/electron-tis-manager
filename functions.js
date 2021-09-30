@@ -1,24 +1,20 @@
 const { PythonShell } = require('python-shell');
 const fs = require('fs');
-const logger = require('electron-log');
+const constants = require("./constants_js");
 
 
 
-function makeLog(name) {
-    logger.info(name);
-}
-function writeLog(name) {
-    fs.appendFileSync(`LOGS_JS.txt`, `${name}\n`, 'utf8');
-}
+
+
 
 const options = {
-    pythonPath: `${__dirname}/Python39/python.exe`,
+    pythonPath: `${__dirname}/Python38/python.exe`,
     args: [],
 };
 
 const buttonFileCycle = document.getElementById('go');
 buttonFileCycle.addEventListener('click', () => {
-    const textOpt = fs.readFileSync(`${__dirname}/tempFiles/options.args.txt`, 'utf8');
+    const textOpt = fs.readFileSync(`${constants.PATHS.utils_path}options.args.txt`, 'utf8');
     writeLog(`TEXT_OPT: ${textOpt}`);
     const textByLine = textOpt.split('?');
     for (const strr of textByLine) {
@@ -26,7 +22,7 @@ buttonFileCycle.addEventListener('click', () => {
     }
 
 
-    PythonShell.run(`${__dirname}/get_the_job_done2.py`, options, (err, results) => {
+    PythonShell.run(`${__dirname}/python_code/entry_python_point.py`, options, (err, results) => {
         makeLog(`options: ${options.args}`);
         writeLog(`PYTHONSHELLRUN OPTIONS.ARGS: ${options.args}`);
         if (err) {

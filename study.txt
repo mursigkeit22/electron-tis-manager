@@ -17,3 +17,6 @@ https://www.electronjs.org/docs/api/ipc-main
 альтернатива https://www.npmjs.com/package/@electron/remote
 =====================================
 
+https://blog.risingstack.com/javascript-clean-coding-best-practices-node-js-at-scale/
+https://www.stanleyulili.com/node/node-modules-import-and-use-functions-from-another-file/
+https://www.electronjs.org/docs/development/coding-style
