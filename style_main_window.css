@@ -111,6 +111,15 @@ body{
     line-height: 40px;
 
 }
+#inputLabel:hover{
+    background-color: rgba(34,179,248,255);
+    border: 5px solid white;
+    color: white;
+    font: 130% Tahoma ;
+
+
+}
+
 .disabled {
     opacity: 0.6;
     cursor: not-allowed;
