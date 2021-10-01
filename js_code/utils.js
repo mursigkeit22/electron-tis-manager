@@ -1,12 +1,16 @@
 
-const logger = require("electron-log");
-const fs = require("fs");
-const constants = require("../constants_js");
+const logger = require('electron-log')
+const fs = require('fs')
+const constants = require('./constants_js')
 
-function logToElectron(text) {
-    logger.info(text);
+function logToElectron (text) {
+  logger.info(text)
 }
-function logToFile(text) {
-    fs.appendFileSync(`${constants.PATHS.log_path}js.log`, `${text}\n`, 'utf8');
+function logToFile (text) {
+  fs.appendFileSync(`${constants.PATHS.logPath}js.log`, text + '\r\n', 'utf8')
 }
-module.exports = { logToElectron,  logToFile};
+function objectListToString (list) {
+  return JSON.stringify(list.map(a => JSON.stringify(a)))
+}
+
+module.exports = { logToElectron, logToFile, objectListToString }

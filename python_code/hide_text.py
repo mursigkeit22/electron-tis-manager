@@ -11,7 +11,7 @@ def hide_text(path_to_file_with_name, file_name):
     except opc.exceptions.PackageNotFoundError:
         utils.log_in_file(f"HIDE_TEXT: PackageNotFoundError {path_to_file_with_name} {file_name}")
 
-        Document.save(f'{constants.path_to_complete}{file_name}')
+        Document().save(f'{constants.complete_path}{file_name}')
         return
 
     # текст документа

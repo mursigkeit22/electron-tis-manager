@@ -20,3 +20,8 @@ https://www.electronjs.org/docs/api/ipc-main
 https://blog.risingstack.com/javascript-clean-coding-best-practices-node-js-at-scale/
 https://www.stanleyulili.com/node/node-modules-import-and-use-functions-from-another-file/
 https://www.electronjs.org/docs/development/coding-style
+https://github.com/airbnb/javascript
+!!!
+https://standardjs.com/
+
+<button id="reset" style='display: none;' onclick='arrayFiles.length=0'>New task</button>

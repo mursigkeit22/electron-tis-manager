@@ -5,15 +5,14 @@
   <title>TIS Manager</title>
   <link rel="stylesheet" href="style_main_window.css">
 
-
 </head>
 
 <body >
 
-<button id="reset" style='display: none;' onclick='arrayFiles.length=0'>New task</button>
+<button id="reset" style='display: none;' >New task</button>
 <label id='inputLabel' for="selectFiles">Выберите файлы</label>
 <input type="file" id="selectFiles" multiple accept=".docx"
-       onchange="writeFileNames()">
+       onchange="upload_helpers.writeFileNames()">
 
 
   <div class="btn-group" id="leftbuttons">
@@ -34,105 +33,10 @@
 <button id="go">Выполнить</button>
 </body>
 
-
 <script>
-  require('./functions.js');
-  const utils = require("./js_code/utils")
-  let fs = require('fs');
-  const logger = require('electron-log');
-  const {ipcRenderer} = require('electron')
-  const constants = require("./constants_js");
+  require('./js_code/event_listeners');
+  const upload_helpers = require("./js_code/upload_file_functions")
 
-
-  var globalFileIdNumber = 0;
-  var arrayFiles = [];
-
-
-  function rewrite() {
-    fs.writeFileSync(`${constants.PATHS.utils_path}options.args.txt`, '');
-    for (var el of arrayFiles) {
-      fs.appendFileSync(`${constants.PATHS.utils_path}options.args.txt`, el.name);
-      fs.appendFileSync(`${constants.PATHS.utils_path}options.args.txt`, '?');
-      fs.appendFileSync(`${constants.PATHS.utils_path}options.args.txt`, el.path);
-      fs.appendFileSync(`${constants.PATHS.utils_path}options.args.txt`, '?');
-    }
-    var text = fs.readFileSync(`${constants.PATHS.utils_path}options.args.txt`, 'utf8');
-    text = text.slice(0, -1); // убираем конечный вопросительный знак и перезаписываем
-    fs.writeFileSync(`${constants.PATHS.utils_path}options.args.txt`, text);
-  }
-
-  function hideLine(idNum) {
-    var selectedDiv = document.getElementById('divnum' + idNum);
-    selectedDiv.style.display = 'none';
-    for (var i = 0; i < arrayFiles.length; i++) {
-      if (arrayFiles[i].fileId === idNum) {
-        arrayFiles.splice(i, 1)
-      }
-    }
-    rewrite()
-  }
-
-
-  function writeFileNames() {
-    var uploadedFiles = document.getElementById("selectFiles");
-    var txt = document.getElementById("nameList").innerHTML;
-
-    var title;
-    var message;
-    utils.logToElectron("hop"+uploadedFiles.files) //hop[object FileList]
-    utils.logToElectron("hop"+uploadedFiles.files[0]) //hop[object File]
-    if ('files' in uploadedFiles) {
-      utils.logToElectron("in cycle")
-
-      if (uploadedFiles.files.length > 0) {
-        var badNames = [];
-        for (var file of uploadedFiles.files) {
-          globalFileIdNumber++;
-          if ('name' in file) {
-            if (nameAlreadyInList(file.name)) {
-              badNames.push(file.name);
-              continue;
-            }
-            txt += "<div id = 'divnum" + globalFileIdNumber + "'> <br> ";
-            txt += file.name + " " +
-                    " <button type='button' class = 'del' onclick='hideLine(" + globalFileIdNumber + " )'>x</button><br></div>";
-            var aboutFiles = {
-              fileId: globalFileIdNumber,
-              name: file.name,
-              path: file.path
-            };
-            arrayFiles.push(aboutFiles);
-
-          }
-        }
-        rewrite();
-        if (badNames.length === 1) {
-          ipcRenderer.sendSync('synchronous-message',
-                  title = 'Oops! I did it again',
-                  message = 'file ' + badNames + ' is already added')
-        }
-        if (badNames.length > 1) {
-          ipcRenderer.sendSync('synchronous-message',
-                  title = 'Oops! I did it again',
-                  message = 'files ' + badNames + ' are already added')
-
-        }
-
-        document.getElementById("selectFiles").value = '';
-      }
-      document.getElementById("nameList").innerHTML = txt;
-    }
-
-  }
-
-  function nameAlreadyInList(name) {
-    for (var obj of arrayFiles) {
-      if (obj.name === name) {
-        return true;
-      }
-    }
-    return false;
-  }
 
 </script>
 
