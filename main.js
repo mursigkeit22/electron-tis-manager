@@ -16,8 +16,8 @@ function createWindow () {
   fs.emptyDirSync(constants.PATHS.utilsPath)
 
   mainWindow = new BrowserWindow({
-    width: 1800,
-    height: 1200,
+    width: 1200,
+    height: 600,
 
     webPreferences: {
       nodeIntegration: true,
