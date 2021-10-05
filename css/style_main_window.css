@@ -1,6 +1,7 @@
 body{
-    background: rgb(18,90,204)!important;
-    background: linear-gradient(90deg, rgba(1,133,200,255) 0%, rgba(34,179,248,255) 100%) !important;
+    /*background: rgb(18,90,204)!important;*/
+    background: #e9f5f8
+            /*linear-gradient(90deg, rgba(1,133,200,255) 0%, rgba(34,179,248,255) 100%) !important;*/
 }
 
 
@@ -26,18 +27,18 @@ body{
     overflow: hidden;
     z-index: -1;
 }
-/*#leftbox{*/
-/*    background-color: whitesmoke;*/
-/*    border-radius: 10px ;*/
-/*    position: absolute;*/
-/*    left:1%;*/
-/*    width: 45%;*/
-/*    top: 10%;*/
-/*    height: 80%;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*}*/
+#leftbox{
+    /*background-color: whitesmoke;*/
+    border-radius: 10px ;
+    position: absolute;
+    left:1%;
+    width: 35%;
+    top: 1%;
+    /*height: 80%;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
 
 #rightbox{
     background-color: whitesmoke;
@@ -127,7 +128,7 @@ body{
     height:5px;
 }
 
-.btn-group .task-button {
+.my-btn-group .task-button {
     opacity: 0.8;
     background-color: whitesmoke;
     border: 2px solid white;

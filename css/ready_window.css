@@ -1,4 +1,4 @@
-#reset {
+.reset {
     width: 20%;
     height:6%;
     left: 50%;
@@ -28,7 +28,7 @@
     height: 20%;
     border-radius: 10px;
     font: 50px/70px Tahoma;
-    color: whitesmoke;
+    color: #333;
     top: 30%
 }
 #second_line{

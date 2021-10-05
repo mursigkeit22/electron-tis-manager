@@ -102,3 +102,5 @@ function writeFileNames () {
 }
 
 module.exports = { writeFileNames, hideLine, arrayFiles }
+ // TODO: class push doesn't work for second window
+

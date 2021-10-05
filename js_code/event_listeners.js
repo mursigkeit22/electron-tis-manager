@@ -79,3 +79,6 @@ window.addEventListener("error", function (e) {
   alert("Error occurred: " + e.error.message);
   return false;
 })
+//Todo: bootstrap alert https://getbootstrap.com/docs/5.1/components/alerts/
+//TODO: цифры на кнопках - https://getbootstrap.com/docs/5.1/components/badge/
+//TODO: всплывающие окна https://getbootstrap.com/docs/5.1/components/modal/
