@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TIS Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style_main_window.css">
+    <link rel="stylesheet" href="css/ready_window.css">
+
+</head>
+<body>
+<div id="first_line" class="ready" >Всё!</div>
+<div id="second_line" class="ready" >Готовые документы лежат в </div>
+<div id="address" class="ready" ></div>
+<button id="reset" class="reset push"  >Новая задача</button>
+
+</body>
+<script>
+    const fs = require("fs-extra");
+    const constants = require("./js_code/constants_js");
+    const {ipcRenderer: ipc} = require("electron");
+    const buttonReset = document.getElementById('reset')
+
+    buttonReset.addEventListener('click', () => {
+        fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '')
+        ipc.send('load-page', '/index.html');
+    })
+
+    window.addEventListener("error", function (e) {
+        alert("Error occurred: " + e.error.message);
+        return false;
+    })
+
+</script>
+</html>

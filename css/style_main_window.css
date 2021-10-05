@@ -33,7 +33,7 @@ body{
     position: absolute;
     left:1%;
     width: 35%;
-    top: 1%;
+    top: 2%;
     /*height: 80%;*/
     /*display: flex;*/
     /*align-items: center;*/
@@ -77,38 +77,38 @@ body{
 }
 .go{
     position: absolute;
-    background-color: whitesmoke;
+    /*background-color: whitesmoke;*/
     left:19%;
     /*margin-left:-5%;*/
     transform: translate(-50%);
-    width: 15%;
-    height:8%;
+    /*width: 15%;*/
+    /*height:8%;*/
     bottom: 1%;
     border-radius: 10px;
     /*font: 200% "Segoe UI Semilight";*/
-    font: 150% Tahoma;
-    color: #333;
+    /*font: 150% Tahoma;*/
+    /*color: #333;*/
     cursor: pointer;
-    outline: none;
-    border: 1px solid floralwhite;
+    /*outline: none;*/
+    /*border: 1px solid floralwhite;*/
 }
 
 .inputLabel{
     position: absolute;
     right: 23%;
     display: inline;
-    background-color: floralwhite;
+    /*background-color: floralwhite;*/
     width: 20%;
     height: 9%;
     top: 6%;
     border-radius: 10px;
-    font: 150% Tahoma;
+    /*font: 150% Tahoma;*/
     text-align: center;
     vertical-align: center;
-    color: #333;
+    /*color: #333;*/
     cursor: pointer;
-    outline: none;
-    line-height: 40px;
+    /*outline: none;*/
+    /*line-height: 40px;*/
 
 }
 
@@ -128,26 +128,27 @@ body{
     height:5px;
 }
 
-.my-btn-group .task-button {
-    opacity: 0.8;
+/*.my-btn-group .task-button {*/
+/*    opacity: 0.8;*/
+/*    background-color: whitesmoke;*/
+/*    border: 2px solid white;*/
+/*    color: black;*/
+/*    padding: 15px 32px;*/
+/*    text-align: center;*/
+/*    text-decoration: none;*/
+/*    font-size: 16px;*/
+/*    cursor: pointer;*/
+/*    width: 400px;*/
+/*    display: block;*/
+/*    border-radius: 10px;*/
+
+/*}*/
+
+
+.inputLabel:hover, .go:hover {
     background-color: whitesmoke;
-    border: 2px solid white;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    width: 400px;
-    display: block;
-    border-radius: 10px;
-
-}
-
-
-.task-button:hover {
-    background-color: #86e0fa;
-    border: 1px solid whitesmoke;
+    border: 2px solid black;
+    color: #333;
 }
 .noHover{
     pointer-events: none;
@@ -173,4 +174,9 @@ body{
     position: absolute;
     left: 30%;
     top: 50%
+}
+.btn-mine {
+    background: #56cbf3 ;
+    border-radius: 10px;
+    font-size: 20px;
 }

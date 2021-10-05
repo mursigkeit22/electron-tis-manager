@@ -11,41 +11,31 @@
 
 <body >
 
-<label id='inputLabel' for="selectFiles" class="inputLabel push">Выбрать файлы</label>
+<label id='inputLabel' for="selectFiles" class="btn btn-dark inputLabel">Выбрать файлы</label>
+
 <input type="file" id="selectFiles" multiple accept=".docx"
        onchange="upload_helpers.writeFileNames()">
 
 <div id="leftbox">
 <div class="d-grid gap-2">
-  <button class="btn btn-info" type="button">Скрыть текст, который не выделен никаким цветом</button>
-  <button class="btn btn-info" type="button">Выбрать цвет и скрыть текст, не выделенный этим цветом</button>
-  <button class="btn btn-info" type="button">Третья задача</button>
-  <button class="btn btn-info" disabled type="button">Третья задача</button>
+  <button class="btn btn-mine" type="button">Скрыть текст, который не выделен никаким цветом</button>
+  <div class="divider"></div>
+  <button class="btn btn-mine" type="button">Выбрать цвет и скрыть текст, не выделенный этим цветом</button>
+  <div class="divider"></div>
+  <button class="btn btn-mine" type="button">Третья задача</button>
+  <div class="divider"></div>
+  <button class="btn btn-mine" disabled type="button">Третья задача</button>
 </div>
 </div>
-<!--  <div class="my-btn-group" id="leftbuttons">-->
-<!--    <button type="button" class="task-button " >-->
-<!--      Скрыть текст, который не выделен никаким цветом-->
-<!--    </button>-->
-<!--    <div class="divider"></div>-->
-<!--    <button type="button" class="task-button disabled">Выбрать цвет и скрыть текст, не выделенный этим цветом</button>-->
-<!--    <div class="divider"></div>  <button type="button" class="task-button disabled">Третья задача</button>-->
-<!--    <div class="divider"></div>  <button type="button" class="task-button disabled">Ещё одна задача</button>-->
-<!--    <div class="divider"></div>  <button type="button" class="task-button disabled" >И ещё одна</button>-->
-<!--    <div class="divider"></div>  <button type="button" class="task-button disabled" >И ещё одна</button>-->
-<!--    <div class="divider"></div>  <button type="button" class="task-button disabled" >И ещё одна</button>-->
-<!--  </div>-->
+
 
 <div id="rightbox">
   <div id="nameList"></div>
 </div>
 
 <div id="wait" style='display: none;'>Пожалуйста, подождите, это может занять пару минут...</div>
-<div id="first_line" class="ready" style='display: none;'>Всё!</div>
-<div id="second_line" class="ready" style='display: none;'>Готовые документы лежат в</div>
-<div id="address" class="ready" style='display: none;'></div>
-<button id="go" class="go push">Выполнить!</button>
-<button id="reset" class="reset push" style='display: none;' >Новая задача</button>
+
+<button id="go" class="btn btn-dark btn-lg go" type="button">Выполнить!</button>
 
 </body>
 

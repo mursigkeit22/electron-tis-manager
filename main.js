@@ -44,6 +44,9 @@ ipcMain.on('synchronous-message', (event, title, message) => {
   dialog.showMessageBox({ message: message, title: title })
   event.returnValue = null
 })
+ipcMain.on('load-page', (event, arg) => {
+  mainWindow.loadURL(`${__dirname}${arg}`);
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

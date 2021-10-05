@@ -4,6 +4,7 @@ const constants = require('./constants_js')
 const utils = require('./utils')
 const uploadHelpers = require('./upload_file_functions')
 const path = require('path')
+const ipc = require('electron').ipcRenderer;
 
 const options = {
   pythonPath: path.join(__dirname, '../Python38/python.exe'),
@@ -22,6 +23,7 @@ buttonFileCycle.addEventListener('click', () => {
   if (textOpt.length === 0) {return}
   utils.logToElectron(`TEXT_OPT: ${textOpt}`)
   const textByLine = textOpt.split('?')
+  console.log(options.args.length)
   for (const str of textByLine) {
     options.args.push(str)
   }
@@ -34,19 +36,13 @@ buttonFileCycle.addEventListener('click', () => {
       alert(err)
       utils.logToElectron(`PYTHONSHELLRUN ERROR: ${err}`)
     }
-    document.getElementById('reset').style.display = 'inline'
-    document.getElementById('first_line').style.display = 'inline'
-    document.getElementById('second_line').style.display = 'inline'
-    document.getElementById('address').style.display = 'inline'
-    document.getElementById('address').innerHTML = constants.PATHS.completePath;
-
-    document.body.style.cursor = 'auto'
-    document.getElementById('wait').style.display = 'none'
-
+    console.log("results:"+results)
     utils.logToElectron(results)
     utils.logToElectron(`RESULT: ${results}`)
+    ipc.send('load-page', '/job_done.html');
   })
-  document.getElementById('leftbuttons').style.display = 'none'
+  console.log("waiting page")
+  document.getElementById('leftbox').style.display = 'none'
   document.getElementById('inputLabel').style.display = 'none'
   document.getElementById('rightbox').style.display = 'none'
   document.getElementById('nameList').style.display = 'none'
@@ -54,26 +50,29 @@ buttonFileCycle.addEventListener('click', () => {
   document.getElementById('go').style.display = 'none'
   document.body.style.cursor = 'wait'
   document.getElementById('wait').style.display = 'inline'
+  console.log("before loading")
+
+
 })
 
 
-const buttonReset = document.getElementById('reset')
-
-buttonReset.addEventListener('click', () => {
-  document.getElementById('inputLabel').style.display = 'block'
-  document.getElementById('rightbox').style.display = 'inline'
-  document.getElementById('nameList').innerHTML = ''
-  document.getElementById('nameList').style.display = 'inline'
-  document.getElementById('leftbuttons').style.display = 'inline'
-  document.getElementById('go').style.display = 'inline'
-  document.getElementById('reset').style.display = 'none'
-  document.getElementById('first_line').style.display = 'none'
-  document.getElementById('second_line').style.display = 'none'
-  document.getElementById('address').style.display = 'none'
-  options.args.length = 0
-  uploadHelpers.arrayFiles.length = 0
-  fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '')
-})
+// const buttonReset = document.getElementById('reset')
+//
+// buttonReset.addEventListener('click', () => {
+//   document.getElementById('inputLabel').style.display = 'block'
+//   document.getElementById('rightbox').style.display = 'inline'
+//   document.getElementById('nameList').innerHTML = ''
+//   document.getElementById('nameList').style.display = 'inline'
+//   document.getElementById('leftbuttons').style.display = 'inline'
+//   document.getElementById('go').style.display = 'inline'
+//   document.getElementById('reset').style.display = 'none'
+//   document.getElementById('first_line').style.display = 'none'
+//   document.getElementById('second_line').style.display = 'none'
+//   document.getElementById('address').style.display = 'none'
+//   options.args.length = 0
+//   uploadHelpers.arrayFiles.length = 0
+//   fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '')
+// })
 
 window.addEventListener("error", function (e) {
   alert("Error occurred: " + e.error.message);
