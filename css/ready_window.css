@@ -1,0 +1,45 @@
+#reset {
+    width: 20%;
+    height:6%;
+    left: 50%;
+    top: 68%;
+    outline: none;
+    border-radius: 10px;
+    transform: translate(-50%);
+    position: absolute;
+    border: 1px solid floralwhite;
+    background-color: whitesmoke;
+    font: 100% Tahoma;
+    color: #333;
+    cursor: pointer;
+}
+.ready {
+    width: 40%;
+    z-index: 9999;
+    position: absolute;
+    left: 30%;
+    text-align: center;
+    display: inline;
+
+
+
+}
+#first_line{
+    height: 20%;
+    border-radius: 10px;
+    font: 50px/70px Tahoma;
+    color: whitesmoke;
+    top: 30%
+}
+#second_line{
+    height: 15%;
+    font: 20px/20px Tahoma;
+    color: #333;
+    top: 50%
+}
+#address {
+    height: 15%;
+    font: 20px/20px Tahoma;
+    color: #333;
+    top: 55%
+}

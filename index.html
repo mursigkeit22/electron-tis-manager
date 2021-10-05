@@ -3,37 +3,46 @@
 <head>
   <meta charset="utf-8">
   <title>TIS Manager</title>
-  <link rel="stylesheet" href="style_main_window.css">
+  <link rel="stylesheet" href="css/style_main_window.css">
+  <link rel="stylesheet" href="css/ready_window.css">
 
 </head>
 
 <body >
 
-<button id="reset" style='display: none;' >New task</button>
-<label id='inputLabel' for="selectFiles">Выберите файлы</label>
+<label id='inputLabel' for="selectFiles" class="inputLabel push">Выбрать файлы</label>
 <input type="file" id="selectFiles" multiple accept=".docx"
        onchange="upload_helpers.writeFileNames()">
 
 
   <div class="btn-group" id="leftbuttons">
     <button type="button" class="task-button " >
-      Скрыть текст, который не выделен цветом
+      Скрыть текст, который не выделен никаким цветом
     </button>
     <div class="divider"></div>
-    <button type="button" class="task-button disabled">Вторая задача</button>
+    <button type="button" class="task-button disabled">Выбрать цвет и скрыть текст, не выделенный этим цветом</button>
     <div class="divider"></div>  <button type="button" class="task-button disabled">Третья задача</button>
     <div class="divider"></div>  <button type="button" class="task-button disabled">Ещё одна задача</button>
+    <div class="divider"></div>  <button type="button" class="task-button disabled" >И ещё одна</button>
+    <div class="divider"></div>  <button type="button" class="task-button disabled" >И ещё одна</button>
     <div class="divider"></div>  <button type="button" class="task-button disabled" >И ещё одна</button>
   </div>
 
 <div id="rightbox">
   <div id="nameList"></div>
 </div>
-<div id="wait" style='display: none;'>Please wait, this may take a couple of minutes...</div>
-<button id="go">Выполнить</button>
+
+<div id="wait" style='display: none;'>Пожалуйста, подождите, это может занять пару минут...</div>
+<div id="first_line" class="ready" style='display: none;'>Всё!</div>
+<div id="second_line" class="ready" style='display: none;'>Готовые документы лежат в</div>
+<div id="address" class="ready" style='display: none;'></div>
+<button id="go" class="go push">Выполнить!</button>
+<button id="reset" class="push" style='display: none;' >Новая задача</button>
+
 </body>
 
 <script>
+<!--  TODO: class push doesn't work for second window-->
   require('./js_code/event_listeners');
   const upload_helpers = require("./js_code/upload_file_functions")
 

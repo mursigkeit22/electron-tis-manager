@@ -46,7 +46,7 @@ body{
     right:1%;
     width: 60%;
     top: 20%;
-    height: 80%;
+    height: 75%;
 
 }
 #nameList{
@@ -61,7 +61,7 @@ body{
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: medium;
     /*padding-left: 5px;*/
-    /*padding-bottom: 5px;*/
+    /*padding-bottom: 20px;*/
     line-height: 1.4;
     overflow-y: auto;
     padding-left: 10px;
@@ -74,10 +74,10 @@ body{
     cursor: pointer;
     border: none;
 }
-#go{
+.go{
     position: absolute;
     background-color: whitesmoke;
-    left:50%;
+    left:19%;
     /*margin-left:-5%;*/
     transform: translate(-50%);
     width: 15%;
@@ -85,24 +85,23 @@ body{
     bottom: 1%;
     border-radius: 10px;
     /*font: 200% "Segoe UI Semilight";*/
-    font: 200% Tahoma;
+    font: 150% Tahoma;
     color: #333;
     cursor: pointer;
     outline: none;
     border: 1px solid floralwhite;
 }
 
-#inputLabel{
+.inputLabel{
     position: absolute;
-    right: 16%;
+    right: 23%;
     display: inline;
     background-color: floralwhite;
-    width: 15%;
+    width: 20%;
     height: 9%;
-    top: 0.5%;
+    top: 6%;
     border-radius: 10px;
-    /*font: 130% "Segoe UI Semilight";*/
-    font: 130% Tahoma;
+    font: 150% Tahoma;
     text-align: center;
     vertical-align: center;
     color: #333;
@@ -111,30 +110,28 @@ body{
     line-height: 40px;
 
 }
-#inputLabel:hover{
-    background-color: rgba(34,179,248,255);
-    border: 5px solid white;
-    color: white;
-    font: 130% Tahoma ;
 
 
+.push:hover{
+    /*background-color: rgba(34,179,248,255);*/
+    border: 2px solid white;
+    /*color: white;*/
+    color:black;
+    font: 180% Tahoma ;
+    line-height: 40px;
 }
 
-.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
+
 
 .divider{
-
     height:5px;
-
 }
 
 .btn-group .task-button {
-    background-color: #008CBA; /* Green */
-    border: 1px solid cornflowerblue;
-    color: white;
+    opacity: 0.8;
+    background-color: whitesmoke;
+    border: 2px solid white;
+    color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -146,29 +143,23 @@ body{
 
 }
 
-.btn-group .task-button:not(:last-child) {
-    border-bottom: none; /* Prevent double borders */
+
+.task-button:hover {
+    background-color: #86e0fa;
+    border: 1px solid whitesmoke;
+}
+.noHover{
+    pointer-events: none;
 }
 
-.btn-group .task-button:hover {
-    background-color: #3e8e41;
-}
-#reset {
-    width: 15%;
-    height:13%;
-    left: 50%;
-    outline: none;
-    border-radius: 10px;
-    transform: translate(-50%);
-    position: absolute;
-    border: 0.5px solid floralwhite;
-    background-color: whitesmoke;
-    /*font: 200% "monospace";*/
-    /*font: 200% "Segoe UI Semilight";*/
-    font: 200% Tahoma;
-    color: #333;
-    cursor: pointer;
-}
+/*.disabled {*/
+/*    !*background-color:#b0cae5 !important;*!*/
+/*    opacity: 0.2 !important;*/
+/*    pointer-events: none;*/
+/*    border: none !important;*/
+
+/*}*/
+
 #wait{
     width: 40%;
     height: 20%;

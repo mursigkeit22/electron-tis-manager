@@ -25,3 +25,8 @@ https://github.com/airbnb/javascript
 https://standardjs.com/
 
 <button id="reset" style='display: none;' onclick='arrayFiles.length=0'>New task</button>
+=============
+#86e0fa light
+#2ec7f7 bright
+#3caed6 dark
+
