@@ -13,4 +13,7 @@ function objectListToString (list) {
   return JSON.stringify(list.map(a => JSON.stringify(a)))
 }
 
+
+
+
 module.exports = { logToElectron, logToFile, objectListToString }

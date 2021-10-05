@@ -19,17 +19,16 @@
     const fs = require("fs-extra");
     const constants = require("./js_code/constants_js");
     const {ipcRenderer: ipc} = require("electron");
+    require('./js_code/common_event_listeners');
+
     const buttonReset = document.getElementById('reset')
+
 
     buttonReset.addEventListener('click', () => {
         fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '')
         ipc.send('load-page', '/index.html');
     })
 
-    window.addEventListener("error", function (e) {
-        alert("Error occurred: " + e.error.message);
-        return false;
-    })
 
 </script>
 </html>

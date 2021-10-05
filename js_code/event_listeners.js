@@ -42,6 +42,7 @@ buttonFileCycle.addEventListener('click', () => {
     ipc.send('load-page', '/job_done.html');
   })
   console.log("waiting page")
+  document.getElementById('g').style.display = 'none'
   document.getElementById('leftbox').style.display = 'none'
   document.getElementById('inputLabel').style.display = 'none'
   document.getElementById('rightbox').style.display = 'none'
@@ -56,28 +57,6 @@ buttonFileCycle.addEventListener('click', () => {
 })
 
 
-// const buttonReset = document.getElementById('reset')
-//
-// buttonReset.addEventListener('click', () => {
-//   document.getElementById('inputLabel').style.display = 'block'
-//   document.getElementById('rightbox').style.display = 'inline'
-//   document.getElementById('nameList').innerHTML = ''
-//   document.getElementById('nameList').style.display = 'inline'
-//   document.getElementById('leftbuttons').style.display = 'inline'
-//   document.getElementById('go').style.display = 'inline'
-//   document.getElementById('reset').style.display = 'none'
-//   document.getElementById('first_line').style.display = 'none'
-//   document.getElementById('second_line').style.display = 'none'
-//   document.getElementById('address').style.display = 'none'
-//   options.args.length = 0
-//   uploadHelpers.arrayFiles.length = 0
-//   fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '')
-// })
-
-window.addEventListener("error", function (e) {
-  alert("Error occurred: " + e.error.message);
-  return false;
-})
 //Todo: bootstrap alert https://getbootstrap.com/docs/5.1/components/alerts/
 //TODO: цифры на кнопках - https://getbootstrap.com/docs/5.1/components/badge/
 //TODO: всплывающие окна https://getbootstrap.com/docs/5.1/components/modal/

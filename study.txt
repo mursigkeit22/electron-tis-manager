@@ -12,6 +12,9 @@ path.basename('C:\\temp\\myfile.html');
 
 https://www.electronjs.org/docs/api/dialog
 
+https://dyclassroom.com/web-project/html5-create-custom-dialog-box-like-facebook
+
+
 https://www.electronjs.org/docs/api/ipc-main
 ? https://www.electronjs.org/docs/api/ipc-renderer
 альтернатива https://www.npmjs.com/package/@electron/remote
@@ -28,7 +31,6 @@ https://jsfiddle.net/
 =================
 import
 https://www.stanleyulili.com/node/node-modules-import-and-use-functions-from-another-file/
-
 
 
 =============

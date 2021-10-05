@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/style_main_window.css">
   <link rel="stylesheet" href="css/ready_window.css">
 
+
 </head>
 
 <body >
@@ -37,14 +38,56 @@
 
 <button id="go" class="btn btn-dark btn-lg go" type="button">Выполнить!</button>
 
+
+
+<div id="myModal" class="modal" data-bs-backdrop="static" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 <script>
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-          crossOrigin="anonymous">
+
   require('./js_code/event_listeners');
+  require('./js_code/common_event_listeners');
+  // require('make-synchronous');
+
+  // import makeSynchronous from 'make-synchronous';
+
   const upload_helpers = require("./js_code/upload_file_functions")
+  const myfn = makeSynchronous( async el => {
+
+    var myModal = new bootstrap.Modal(el)
+    myModal.show()
+
+  });
+  window.addEventListener("error", function (e) {
+    myfn(document.getElementById('myModal'))
+    // var myModal = new bootstrap.Modal(document.getElementById('myModal'))
+    // myModal.show()
+    // alert("Error occurred: " + e.error.message);
+    window.alert("Hello world!");
+
+    })
+    //
+
+
+
 
 
 </script>
