@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>TIS Manager</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style_main_window.css">
     <link rel="stylesheet" href="css/ready_window.css">
 
@@ -20,9 +21,9 @@
     const constants = require("./js_code/constants_js");
     const {ipcRenderer: ipc} = require("electron");
     require('./js_code/common_event_listeners');
+    document.getElementById("address").innerHTML = constants.PATHS.completePath;
 
     const buttonReset = document.getElementById('reset')
-
 
     buttonReset.addEventListener('click', () => {
         fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '')

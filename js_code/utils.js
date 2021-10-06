@@ -12,6 +12,10 @@ function logToFile (text) {
 function objectListToString (list) {
   return JSON.stringify(list.map(a => JSON.stringify(a)))
 }
+function getTitleAndErrorFromFile(){
+
+}
+
 
 
 

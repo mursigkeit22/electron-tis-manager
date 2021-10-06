@@ -26,12 +26,12 @@
   "dependencies": {
     "custom-alert": "^2.2.0",
     "dialog": "^0.3.1",
+    "electron-custom-dialog": "^1.0.0",
     "electron-log": "^4.4.1",
     "electron-squirrel-startup": "^1.0.0",
     "fs": "^0.0.1-security",
     "fs-extra": "^10.0.0",
     "jquery": "^3.6.0",
-    "make-synchronous": "^1.0.0",
     "popper.js": "^1.16.1",
     "python-shell": "^3.0.0"
   },

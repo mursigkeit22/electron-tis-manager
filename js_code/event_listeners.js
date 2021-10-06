@@ -23,7 +23,6 @@ buttonFileCycle.addEventListener('click', () => {
   if (textOpt.length === 0) {return}
   utils.logToElectron(`TEXT_OPT: ${textOpt}`)
   const textByLine = textOpt.split('?')
-  console.log(options.args.length)
   for (const str of textByLine) {
     options.args.push(str)
   }
@@ -36,7 +35,6 @@ buttonFileCycle.addEventListener('click', () => {
       alert(err)
       utils.logToElectron(`PYTHONSHELLRUN ERROR: ${err}`)
     }
-    console.log("results:"+results)
     utils.logToElectron(results)
     utils.logToElectron(`RESULT: ${results}`)
     ipc.send('load-page', '/job_done.html');

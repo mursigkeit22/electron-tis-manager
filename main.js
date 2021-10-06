@@ -3,6 +3,7 @@ const { ipcMain } = require('electron')
 const fs = require('fs-extra')
 const constants = require('./js_code/constants_js')
 
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -48,6 +49,27 @@ ipcMain.on('load-page', (event, arg) => {
   mainWindow.loadURL(`${__dirname}${arg}`);
 });
 
+ipcMain.on('dialog_window', (event) => {
+  const child = new BrowserWindow({ width: 400,
+    height: 200, parent: mainWindow, modal: true, show: false,
+    icon: `${__dirname}/icons/white.png`,  resizable: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    },
+    })
+
+  child.setMenu(null)
+  child.setMinimizable(false)
+  child.loadFile(`${__dirname}/dialog.html`)
+  child.once('ready-to-show', () => {
+    child.show()
+    event.returnValue = null
+  })
+
+});
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -68,6 +90,7 @@ app.on('activate', function () {
   if (mainWindow === null) {
     createWindow()
   }
+
 })
 
 // In this file you can include the rest of your app's specific main process

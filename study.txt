@@ -11,7 +11,8 @@ path.basename('C:\\temp\\myfile.html');
 +======================================
 
 https://www.electronjs.org/docs/api/dialog
-
+Window settings:
+https://www.electronjs.org/docs/api/browser-window#modal-windows
 https://dyclassroom.com/web-project/html5-create-custom-dialog-box-like-facebook
 
 
