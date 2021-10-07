@@ -35,9 +35,9 @@ function showDialogDuplicateFiles (badNames) {
   utils.logToFile(`In showDialogDuplicateFiles, badNames: ${badNames}`)
 
   if (badNames.length === 1) {
-    ipcRenderer.sendSync('synchronous-message',
-      'Oops! I did it again',
-      'file ' + badNames + ' is already added')
+    fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
+      "Oops! I did it again??"+'file ' + badNames + ' is already added')
+    ipcRenderer.sendSync('dialog_window')
   }
   if (badNames.length > 1) {
     ipcRenderer.sendSync('synchronous-message',
@@ -103,5 +103,4 @@ function writeFileNames () {
 }
 
 module.exports = { writeFileNames, hideLine, arrayFiles }
- // TODO: class push doesn't work for second window
-
+// TODO: class push doesn't work for second window

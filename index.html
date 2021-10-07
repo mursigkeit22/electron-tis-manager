@@ -46,30 +46,12 @@
 
   require('./js_code/event_listeners');
   require('./js_code/common_event_listeners');
+
   const fs = require('fs')
   const constants = require('./js_code/constants_js')
-
-
-
-
   const upload_helpers = require("./js_code/upload_file_functions")
   const utils = require('./js_code/utils')
   const { ipcRenderer } = require('electron')
-
-
-  window.addEventListener("error", function (e) {
-    fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-            "JavaScript error occurred??"+e.error.message)
-
-    ipcRenderer.sendSync('dialog_window')
-
-    // alert("Error occurred: " + e.error.message);
-
-    })
-
-
-
-
 
 
 </script>

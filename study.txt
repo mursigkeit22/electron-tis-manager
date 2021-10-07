@@ -35,6 +35,11 @@ https://www.stanleyulili.com/node/node-modules-import-and-use-functions-from-ano
 
 
 =============
+PACKAGING
+https://www.electron.build/
+https://stackoverflow.com/questions/31286924/how-to-deploy-an-electron-app-as-an-executable-or-installable-in-windows
+=================
+
 colors
 find out which color in the image
 https://imagecolorpicker.com/

@@ -1,8 +1,10 @@
-// window.addEventListener("error", function (e) {
-//   var alertList = document.querySelectorAll('.alert')
-//   var alerts =  [].slice.call(alertList).map(function (element) {
-//     return new bootstrap.Alert(element)
-//   })
-//   // alert("Error occurred: " + e.error.message);
-//   return false;
-// })
+window.addEventListener("error", function (e) {
+  // записываем в файл, т.к. ни один способ передачи данных
+  // из renderer process в main process и потом обратно у меня не сработал
+  fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
+    "JavaScript error occurred??"+e.error.message)
+
+  ipcRenderer.sendSync('dialog_window')
+
+
+})

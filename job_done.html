@@ -21,6 +21,7 @@
     const constants = require("./js_code/constants_js");
     const {ipcRenderer: ipc} = require("electron");
     require('./js_code/common_event_listeners');
+
     document.getElementById("address").innerHTML = constants.PATHS.completePath;
 
     const buttonReset = document.getElementById('reset')

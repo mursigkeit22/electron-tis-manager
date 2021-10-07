@@ -24,14 +24,19 @@
 
 </body>
 <script>
+<!--  TODO: different colors-->
   const fs = require('fs')
   const constants = require('./js_code/constants_js')
   const utils = require('./js_code/utils')
+  require('./js_code/common_event_listeners');
+
+function putTextInDialog(document){
   const dialogData = fs.readFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`, 'utf8');
   const titleAndText = dialogData.split('??')
   document.getElementById("title").innerHTML = titleAndText[0];
-  document.getElementById("error_text").innerHTML = titleAndText[1];
+  document.getElementById("error_text").innerHTML = titleAndText[1];}
 
+putTextInDialog(document)
 
 </script>
 </html>
