@@ -56,14 +56,14 @@ ipcMain.on('dialog_window', (event) => {
     modal: true,
     show: false,
     icon: `${__dirname}/icons/white.png`,
-    resizable: false,
+    // resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
     }
   })
 
-  child.setMenu(null)
+  // child.setMenu(null)
   child.setMinimizable(false)
   child.loadFile(`${__dirname}/dialog.html`)
   child.once('ready-to-show', () => {

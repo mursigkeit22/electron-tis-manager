@@ -8,33 +8,46 @@
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 
-    <symbol id="exclamation-triangle-fill" fill="red" viewBox="0 0 16 16">
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
         <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
     </symbol>
 </svg>
 
 <div id="root">
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <div class="alert alert-danger d-flex align-items-center" role="alert" id="error" style='display: none!important;'>
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
         <div id="error_text">
             An example danger alert with an icon
+        </div>
+    </div>
+
+    <div class="alert alert-warning d-flex align-items-center" role="alert" id="warning" style='display: none !important;'>
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+        <div id="warning_text">
+            An example warning alert with an icon
         </div>
     </div>
 </div>
 
 </body>
 <script>
-<!--  TODO: different colors-->
   const fs = require('fs');
   const constants = require('./js_code/constants_js');
   const utils = require('./js_code/utils')
   require('./js_code/common_event_listeners');
 
 function putTextInDialog(document){
-  const dialogData = fs.readFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`, 'utf8');
-  const titleAndText = dialogData.split('??')
-  document.getElementById("title").innerHTML = titleAndText[0];
-  document.getElementById("error_text").innerHTML = titleAndText[1];}
+    const dialogData = fs.readFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`, 'utf8');
+    const typeAndTitleAndText = dialogData.split('??')
+    document.getElementById("title").innerHTML = typeAndTitleAndText[1];
+
+
+    let type = typeAndTitleAndText[0]
+    let preferredElement = document.getElementById(type)
+    console.log("type"+`${type}`)
+
+    preferredElement.style.display = 'inline'
+    document.getElementById(`${type}_text`).innerHTML = typeAndTitleAndText[2];}
 
 putTextInDialog(document)
 
