@@ -37,8 +37,6 @@ Go.addEventListener('click', () => {
     utils.logToElectron(`RESULT: ${results}`)
     ipc.send('load-page', '/job_done.html')
   })
-  console.log('waiting page')
-  document.getElementById('g').style.display = 'none'
   document.getElementById('leftbox').style.display = 'none'
   document.getElementById('inputLabel').style.display = 'none'
   document.getElementById('rightbox').style.display = 'none'
@@ -47,7 +45,6 @@ Go.addEventListener('click', () => {
   document.getElementById('go').style.display = 'none'
   document.body.style.cursor = 'wait'
   document.getElementById('wait').style.display = 'inline'
-  console.log('before loading')
 })
 
 // TODO: цифры на кнопках - https://getbootstrap.com/docs/5.1/components/badge/
