@@ -3,6 +3,7 @@ const fs = require('fs-extra')
 const constants = require('./constants_js')
 const utils = require('./utils')
 const path = require('path')
+const {arrayFiles} = require("./upload_file_functions");
 const ipc = require('electron').ipcRenderer
 
 const options = {
@@ -12,6 +13,13 @@ const options = {
 
 const Go = document.getElementById('go')
 Go.addEventListener('click', () => {
+  for (const obj of arrayFiles) {
+    fs.appendFileSync(`${constants.PATHS.utilsPath}new_file.txt`, obj.name)
+    fs.appendFileSync(`${constants.PATHS.utilsPath}new_file.txt`, '\r\n')
+    fs.appendFileSync(`${constants.PATHS.utilsPath}new_file.txt`, obj.path)
+    fs.appendFileSync(`${constants.PATHS.utilsPath}new_file.txt`, '\r\n')
+
+  }
   if (!fs.existsSync(`${constants.PATHS.utilsPath}options.args.txt`)) {
     utils.logToFile("File options.args.txt doesn't exist")
     return

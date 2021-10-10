@@ -4,7 +4,6 @@ const constants = require('./constants_js')
 const utils = require('./utils')
 let globalFileIdNumber = 0
 const arrayFiles = []
-console.log(arrayFiles.length)
 
 function rewrite () {
   utils.logToFile('In rewrite')
@@ -103,4 +102,3 @@ function writeFileNames () {
 }
 
 module.exports = { writeFileNames, hideLine, arrayFiles }
-// TODO: class push doesn't work for second window

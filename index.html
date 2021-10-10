@@ -24,17 +24,14 @@
     Скрыть текст, который не выделен никаким цветом
     <span id="badge1" class="position-absolute start-100 translate-middle p-2 bg-danger border border-light rounded-circle"  style='display: flex;'></span></button>
 
-  <div class="divider"></div>
 
   <button class="btn btn-mine" type="button" id="2">Выбрать цвет и скрыть текст, не выделенный этим цветом
     <span id="badge2" class="position-absolute  start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: flex;'></span></button>
 
-  <div class="divider"></div>
 
   <button class="btn btn-mine" type="button" id="3">Третья задача
     <span id="badge3" class="position-absolute  start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: flex;'></span>
   </button>
-  <div class="divider"></div>
   <button class="btn btn-mine"  type="button" id="4">Третья задача
     <span id="badge4" class="position-absolute start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: flex;'></span>
   </button>
@@ -66,27 +63,18 @@
   const upload_helpers = require("./js_code/upload_file_functions")
   const utils = require('./js_code/utils')
   const { ipcRenderer } = require('electron')
-  buttons = document.getElementsByClassName("btn-mine")
 
-  console.log("BUTTONS"+buttons.length)
+
+  buttons = document.getElementsByClassName("btn-mine")
   for (let bn of buttons) {
     const button_id = bn.id
     const spanId = bn.firstElementChild.id
-    console.log("Button "+button_id)
-    console.log("SPAN"+spanId)
-
-
     document.getElementById(button_id).addEventListener('click', () => {
-      console.log("in addEventListener " + button_id)
 
       if (bn.firstElementChild.style.getPropertyValue("display")==='none') {
-        console.log("SPAN ID: "+spanId)
         document.getElementById(spanId).style.display = "flex"
-        console.log("CHANGED STYLE")
       }
       else {
-        console.log("SPAN ID: "+spanId)
-
         document.getElementById(spanId).style.display = "none"
       }
     })
