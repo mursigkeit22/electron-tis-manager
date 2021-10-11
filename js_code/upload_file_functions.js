@@ -56,7 +56,7 @@ function iterateThroughUploadedFiles (uploadedFiles, filesListText) {
 
     filesListText += "<div id = 'divnum" + globalFileIdNumber + "'> <br> "
     filesListText += file.name + ' ' +
-            " <button type='button' class = 'del' onclick='upload_helpers.hideLine(" + globalFileIdNumber + " )'>x</button><br></div>"
+            " <button type='button' class = 'btn btn-info btn-sm del' onclick='upload_helpers.hideLine(" + globalFileIdNumber + " )'>удалить</button><br></div>"
     const aboutFiles = {
       fileId: globalFileIdNumber,
       name: file.name,
