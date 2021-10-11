@@ -27,7 +27,7 @@
     const buttonReset = document.getElementById('reset')
 
     buttonReset.addEventListener('click', () => {
-        fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '')
+        fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, '')
         fs.writeFileSync(`${constants.PATHS.utilsPath}tasksToExecute.txt`, '')
         ipc.send('load-page', '/index.html');
     })

@@ -7,16 +7,13 @@ const arrayFiles = []
 
 function rewrite () {
   utils.logToFile('In rewrite')
-  fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '')
+  fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, '')
   for (const el of arrayFiles) {
-    fs.appendFileSync(`${constants.PATHS.utilsPath}options.args.txt`, el.name)
-    fs.appendFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '?')
-    fs.appendFileSync(`${constants.PATHS.utilsPath}options.args.txt`, el.path)
-    fs.appendFileSync(`${constants.PATHS.utilsPath}options.args.txt`, '?')
+    fs.appendFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, el.name+"\n")
+    fs.appendFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, el.path+"\n")
   }
-  let text = fs.readFileSync(`${constants.PATHS.utilsPath}options.args.txt`, 'utf8')
-  text = text.slice(0, -1) // убираем конечный вопросительный знак и перезаписываем
-  fs.writeFileSync(`${constants.PATHS.utilsPath}options.args.txt`, text)
+  let text = fs.readFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, 'utf8')
+  fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, text)
 }
 
 function hideLine (idNum) {

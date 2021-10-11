@@ -4,7 +4,7 @@ window.addEventListener("error", function (e) {
   fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
     "error??JavaScript error occurred??"+e.error.message)
 
-  ipcRenderer.sendSync('dialog_window')
+  ipc.sendSync('dialog_window')
 
 
 })

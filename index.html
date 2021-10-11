@@ -22,18 +22,18 @@
 
   <button class="btn btn-mine" type="button"  id="1">
     Скрыть текст, который не выделен никаким цветом
-    <span id="badge1" class="position-absolute start-100 translate-middle p-2 bg-danger border border-light rounded-circle"  style='display: flex;'></span></button>
+    <span id="badge1" class="position-absolute start-100 translate-middle p-2 bg-danger border border-light rounded-circle"  style='display: none;'></span></button>
 
 
   <button class="btn btn-mine" type="button" id="2">Выбрать цвет и скрыть текст, не выделенный этим цветом
-    <span id="badge2" class="position-absolute  start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: flex;'></span></button>
+    <span id="badge2" class="position-absolute  start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: none;'></span></button>
 
 
   <button class="btn btn-mine" type="button" id="3">Третья задача
-    <span id="badge3" class="position-absolute  start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: flex;'></span>
+    <span id="badge3" class="position-absolute  start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: none;'></span>
   </button>
   <button class="btn btn-mine"  type="button" id="4">Третья задача
-    <span id="badge4" class="position-absolute start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: flex;'></span>
+    <span id="badge4" class="position-absolute start-100 translate-middle p-2 bg-danger border border-light rounded-circle" style='display: none;'></span>
   </button>
 
 
@@ -58,27 +58,16 @@
   require('./js_code/index_event_listeners');
   require('./js_code/common_event_listeners');
 
-  const fs = require('fs')
-  const constants = require('./js_code/constants_js')
+
   const upload_helpers = require("./js_code/upload_file_functions")
-  const utils = require('./js_code/utils')
-  const { ipcRenderer } = require('electron')
+  const fs = require('fs-extra')
+  const constants = require('./js_code/constants_js')
+  const ipc = require('electron').ipcRenderer
 
 
-  buttons = document.getElementsByClassName("btn-mine")
-  for (let bn of buttons) {
-    const button_id = bn.id
-    const spanId = bn.firstElementChild.id
-    document.getElementById(button_id).addEventListener('click', () => {
 
-      if (bn.firstElementChild.style.getPropertyValue("display")==='none') {
-        document.getElementById(spanId).style.display = "flex"
-      }
-      else {
-        document.getElementById(spanId).style.display = "none"
-      }
-    })
-  }
+
+
 
 
 </script>

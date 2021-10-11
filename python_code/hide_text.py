@@ -1,22 +1,21 @@
 from docx import oxml, Document, opc
 import constants
-import utils
+import utils_py
 
 
 def hide_text(path_to_file_with_name, file_name):
-    utils.log_in_file(f"HIDE_TEXT: {path_to_file_with_name} {file_name}")
+    utils_py.log_in_file(f"HIDE_TEXT: {path_to_file_with_name} {file_name}")
 
     try:
         document = Document(path_to_file_with_name)
     except opc.exceptions.PackageNotFoundError:
-        utils.log_in_file(f"HIDE_TEXT: PackageNotFoundError {path_to_file_with_name} {file_name}")
+        utils_py.log_in_file(f"HIDE_TEXT: PackageNotFoundError {path_to_file_with_name} {file_name}")
 
         Document().save(f'{constants.complete_path}{file_name}')
         return
 
     # текст документа
     elements_list = document._element.xpath('//w:r')
-
 
     WPML_URI = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
     tag_rPr = WPML_URI + 'rPr'
@@ -29,7 +28,7 @@ def hide_text(path_to_file_with_name, file_name):
         так как с их помощью нельзя скрыть автоматически сгенерированное содержание.
 
         """
-        utils.log_in_file(f"HIDE_TEXT: hide_not_highlighted_text")
+        utils_py.log_in_file(f"HIDE_TEXT: hide_not_highlighted_text")
         for element in elements:
             try:
                 rpr_list = element.findall(tag_rPr)
@@ -53,7 +52,7 @@ def hide_text(path_to_file_with_name, file_name):
         используем методы  docx библиотеки, чтобы проверить весь текст в колонтитулах.
         работаем с таблицами и с параграфами, которые могут быть в колонтитулах.
         """
-        utils.log_in_file(f"HIDE_TEXT: iterate_footer_header {footer_or_header}")
+        utils_py.log_in_file(f"HIDE_TEXT: iterate_footer_header {footer_or_header}")
 
         for t in footer_or_header.tables:
             for row in t.rows:
@@ -74,7 +73,7 @@ def hide_text(path_to_file_with_name, file_name):
     # боковые колонтитулы тоже входят
 
     for section in document.sections:
-        utils.log_in_file(f"HIDE_TEXT: iterating through sections")
+        utils_py.log_in_file(f"HIDE_TEXT: iterating through sections")
 
         footers_and_headers = (section.footer, section.even_page_footer, section.first_page_footer,
                                section.header, section.even_page_header, section.first_page_header)
