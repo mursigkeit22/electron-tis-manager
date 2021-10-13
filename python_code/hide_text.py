@@ -1,5 +1,5 @@
 from docx import oxml, Document, opc
-from .. import constants, utils_py
+import constants, utils_py
 
 
 def hide_text(path_to_file_with_name, file_name):
