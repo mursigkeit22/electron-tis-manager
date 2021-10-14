@@ -38,10 +38,11 @@ Go.addEventListener('click', () => {
 
   if (!utils.checkIfFilesAdded()) {return}
   options.args.push(arrayTasks)
-
+  // options.args.push("1 arg")
+  utils.logToFile('OPTIONS:' + options)
   PythonShell.run(path.join(__dirname, '../python_code/entry_python_point.py'), options, (err, results) => {
     utils.logToFile(`options: ${options.args}`)
-    utils.logToElectron(`PYTHONSHELLRUN OPTIONS.ARGS: ${options.args}`)
+    utils.logToElectron(`PYTHONSHELLRUN OPTIONS.ARGS: ${options.args}`) //TODO: check when and why options are empty
     if (err) {
       utils.logToElectron(`PYTHONSHELLRUN ERROR: ${err}`)
       alert(err)
