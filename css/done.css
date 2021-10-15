@@ -41,5 +41,7 @@
     height: 15%;
     font: 20px/20px Tahoma;
     color: #333;
-    top: 55%
+    top: 55%;
+    cursor:pointer;
+    text-decoration:underline;
 }

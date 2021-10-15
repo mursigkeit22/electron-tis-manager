@@ -2,9 +2,8 @@ const { PythonShell } = require('python-shell')
 const utils = require('./utils')
 const path = require('path')
 const {arrayFiles} = require("./upload_file_functions");
-const arrayTasks = []
+let task = undefined;
 
-console.log(arrayTasks)
 
 
 const options = {
@@ -14,31 +13,10 @@ const options = {
 
 const Go = document.getElementById('go')
 Go.addEventListener('click', () => {
-  utils.logToFile("arrayTasks: "+arrayTasks)
-  // for (const obj of arrayFiles) {
-  //   fs.appendFileSync(`${constants.PATHS.utilsPath}new_file.txt`, obj.name)
-  //   fs.appendFileSync(`${constants.PATHS.utilsPath}new_file.txt`, '\n')
-  //   fs.appendFileSync(`${constants.PATHS.utilsPath}new_file.txt`, obj.path)
-  //   fs.appendFileSync(`${constants.PATHS.utilsPath}new_file.txt`, '\n')
-  //
-  // }
 
-
-  // if (!fs.existsSync(`${constants.PATHS.utilsPath}options.args.txt`)) {
-  //   utils.logToFile("File options.args.txt doesn't exist")
-  //   return
-  // }
-  // let textOpt = fs.readFileSync(`${constants.PATHS.utilsPath}options.args.txt`, 'utf8')
-  // if (textOpt.length === 0) { return }
-  // utils.logToElectron(`TEXT_OPT: ${textOpt}`)
-  // const textByLine = textOpt.split('?')
-  // for (const str of textByLine) {
-  //   options.args.push(str)
-  // }
 
   if (!utils.checkIfFilesAdded()) {return}
-  options.args.push(arrayTasks)
-  // options.args.push("1 arg")
+  options.args.push(task)
   utils.logToFile('OPTIONS:' + options)
   PythonShell.run(path.join(__dirname, '../python_code/entry_python_point.py'), options, (err, results) => {
     utils.logToFile(`options: ${options.args}`)
@@ -50,7 +28,7 @@ Go.addEventListener('click', () => {
     }
     utils.logToElectron(results)
     utils.logToElectron(`RESULT: ${results}`)
-    ipc.send('load-page', '/job_done.html')
+    ipc.send('load-page', '/done.html')
   })
   document.getElementById('leftbox').style.display = 'none'
   document.getElementById('inputLabel').style.display = 'none'
@@ -62,6 +40,7 @@ Go.addEventListener('click', () => {
   document.getElementById('wait').style.display = 'inline'
 })
 
+
 const buttons = document.getElementsByClassName("btn-mine")
 for (let bn of buttons) {
   const button_id = bn.id
@@ -69,14 +48,18 @@ for (let bn of buttons) {
   document.getElementById(button_id).addEventListener('click', () => {
 
     if (bn.firstElementChild.style.getPropertyValue("display")==='none') {
-      arrayTasks.push(button_id)
+      console.log('TASK if none before '+task)
+
+      if (task !== undefined){
+        document.getElementById(task).firstElementChild.style.display = "none"
+
+      }
+      task = button_id
       document.getElementById(spanId).style.display = "flex"
+      console.log('TASK if none after '+task)
     }
     else {
-      const index = arrayTasks.indexOf(button_id);
-      if (index > -1) {
-        arrayTasks.splice(index, 1);
-      }
+      task = undefined
       document.getElementById(spanId).style.display = "none"
     }
   })

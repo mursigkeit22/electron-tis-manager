@@ -6,15 +6,24 @@
 """
 from docx import Document, opc
 import constants, utils_py
+from typing import List
 
 tasks = {"2": "highlight_color",
-         "3": "italic"}
+         "3": "italic",
+         }
 
-#TODO: сделать так, что если две задачи, то скрывался только текст, не подходящий не под одну задачу.
-def hide(path_to_file_with_name: str, file_name: str, task_list: list):  # TODO: list of what?
+def hide(path_to_file_with_name: str, file_name: str, task: str):
 
     utils_py.log_in_file(f"HIDE: {path_to_file_with_name} {file_name}")
-    utils_py.log_in_file(f"HIDE: TASKS: {task_list}")
+    utils_py.log_in_file(f"HIDE: TASK: {task}, {tasks[task]}")
+
+    def change_font_properties(task, run):
+        if task == "2":
+            if run.font.highlight_color is None:
+                run.font.hidden = True
+        elif task == "3":
+            if run.font.italic is None:
+                run.font.hidden = True
 
     try:
         document = Document(path_to_file_with_name)
@@ -29,21 +38,24 @@ def hide(path_to_file_with_name: str, file_name: str, task_list: list):  # TODO:
             for cell in row.cells:
                 for p in cell.paragraphs:
                     for run in p.runs:
-                        if "3" in task_list:
-                            if run.font.italic is None:
-                                run.font.hidden = True
-                        if "2" in task_list:
-                            if run.font.highlight_color is None:
-                                run.font.hidden = True
+                        change_font_properties(task, run)
+                        # if task == "2":
+                        #     if run.font.highlight_color is None:
+                        #         run.font.hidden = True
+                        # elif task == "3":
+                        #     if run.font.italic is None:
+                        #         run.font.hidden = True
 
     for p in document.paragraphs:
         for run in p.runs:
-            if "3" in task_list:
-                if run.font.italic is None:
-                    run.font.hidden = True
-            if "2" in task_list:
-                if run.font.highlight_color is None:
-                    run.font.hidden = True
+            change_font_properties(task, run)
+
+            # if task == "2":
+            #     if run.font.highlight_color is None:
+            #         run.font.hidden = True
+            # elif task == "3":
+            #     if run.font.italic is None:
+            #         run.font.hidden = True
 
     def iterate_footer_header(footer_or_header):
         """
@@ -55,21 +67,25 @@ def hide(path_to_file_with_name: str, file_name: str, task_list: list):  # TODO:
                 for cell in row.cells:
                     for p in cell.paragraphs:
                         for run in p.runs:
-                            if "3" in task_list:
-                                if run.font.italic is None:
-                                    run.font.hidden = True
-                            if "2" in task_list:
-                                if run.font.highlight_color is None:
-                                    run.font.hidden = True
+                            change_font_properties(task, run)
+
+                            # if task == "2":
+                            #     if run.font.highlight_color is None:
+                            #         run.font.hidden = True
+                            # elif task == "3":
+                            #     if run.font.italic is None:
+                            #         run.font.hidden = True
 
         for p in footer_or_header.paragraphs:
             for run in p.runs:
-                if "3" in task_list:
-                    if run.font.italic is None:
-                        run.font.hidden = True
-                if "2" in task_list:
-                    if run.font.highlight_color is None:
-                        run.font.hidden = True
+                change_font_properties(task, run)
+
+                # if "3" in task_list:
+                #     if run.font.italic is None:
+                #         run.font.hidden = True
+                # if "2" in task_list:
+                #     if run.font.highlight_color is None:
+                #         run.font.hidden = True
 
     # итерируемся по всем секциям в документе и обрабатываем все три вида верхних и нижних колонтитулов.
     # боковые колонтитулы тоже входят
