@@ -1,19 +1,24 @@
 """
-СКРЫТЬ ТЕКСТ, _НЕ_ ВЫДЕЛЕННЫЙ ОДНИМ ИЗ: КУРСИВ, ЦВЕТ, ЖИРНЫЙ ШРИФТ
+
 ЕСЛИ ВЫДЕЛЕННЫЙ ТЕКСТ УЖЕ БЫЛ СКРЫТЫМ, ОН ОСТАНЕТСЯ СКРЫТЫМ
 
 не скрывает автоматически сгенерированное содержание и некоторые кривые списки
 """
 from docx import Document, opc
 import constants, utils_py
-from typing import List
 
-tasks = {"2": "highlight_color",
-         "3": "italic",
-         }
+tasks = {
+    "1": "hide if colored in any color",
+    "2": "hide if not colored in any color",
+    "3": "hide if colored in chosen color",
+    "4": "hide if not colored in chosen color",
+    "5": "hide if italic",
+    "6": "hide if not italic",
+    "7": "hide if strike",
+}
+
 
 def hide(path_to_file_with_name: str, file_name: str, task: str):
-
     utils_py.log_in_file(f"HIDE: {path_to_file_with_name} {file_name}")
     utils_py.log_in_file(f"HIDE: TASK: {task}, {tasks[task]}")
 
@@ -23,6 +28,9 @@ def hide(path_to_file_with_name: str, file_name: str, task: str):
                 run.font.hidden = True
         elif task == "3":
             if run.font.italic is None:
+                run.font.hidden = True
+        elif task == "7":
+            if run.font.strike:
                 run.font.hidden = True
 
     try:

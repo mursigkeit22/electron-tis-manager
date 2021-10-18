@@ -42,27 +42,24 @@ Go.addEventListener('click', () => {
 
 
 const buttons = document.getElementsByClassName("btn-mine")
+
 for (let bn of buttons) {
   const button_id = bn.id
   const spanId = bn.firstElementChild.id
-  document.getElementById(button_id).addEventListener('click', () => {
-
-    if (bn.firstElementChild.style.getPropertyValue("display")==='none') {
-      console.log('TASK if none before '+task)
-
+  bn.addEventListener("click", function(){
+    if (!this.classList.contains("active")){
       if (task !== undefined){
-        document.getElementById(task).firstElementChild.style.display = "none"
-
-      }
+              document.getElementById(task).classList.remove("active")
+            }
+      this.classList.add("active");
       task = button_id
-      document.getElementById(spanId).style.display = "flex"
-      console.log('TASK if none after '+task)
+      console.log("Adding Active")
     }
     else {
-      task = undefined
-      document.getElementById(spanId).style.display = "none"
+      task = undefined;
+      this.classList.remove("active");
     }
-  })
-}
+
+})}
 
 // TODO: всплывающие окна https://getbootstrap.com/docs/5.1/components/modal/

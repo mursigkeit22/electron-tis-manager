@@ -46,4 +46,7 @@ https://imagecolorpicker.com/
 #86e0fa light
 #2ec7f7 bright
 #3caed6 dark
+===============
+Buttons
+https://webdeasy.de/en/top-css-buttons-en/
 
