@@ -48,5 +48,10 @@ https://imagecolorpicker.com/
 #3caed6 dark
 ===============
 Buttons
+красивые эффекты
 https://webdeasy.de/en/top-css-buttons-en/
+active button state
+https://redstapler.co/toggle-active-button-state-javascript/
+кнопки
+https://www.w3schools.com/css/css3_buttons.asp
 

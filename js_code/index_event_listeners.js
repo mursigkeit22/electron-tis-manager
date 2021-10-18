@@ -45,8 +45,11 @@ const buttons = document.getElementsByClassName("btn-mine")
 
 for (let bn of buttons) {
   const button_id = bn.id
-  const spanId = bn.firstElementChild.id
   bn.addEventListener("click", function(){
+    if (button_id === "3") {
+      ipc.sendSync('choose_color_window')
+
+    }
     if (!this.classList.contains("active")){
       if (task !== undefined){
               document.getElementById(task).classList.remove("active")
@@ -62,4 +65,3 @@ for (let bn of buttons) {
 
 })}
 
-// TODO: всплывающие окна https://getbootstrap.com/docs/5.1/components/modal/

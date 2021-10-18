@@ -63,9 +63,35 @@ ipcMain.on('dialog_window', (event) => {
     }
   })
 
+
   // child.setMenu(null)
   child.setMinimizable(false)
   child.loadFile(`${__dirname}/dialog.html`)
+  child.once('ready-to-show', () => {
+    child.show()
+    event.returnValue = null
+  })
+})
+
+
+ipcMain.on('choose_color_window', (event) => {
+  const child = new BrowserWindow({
+    width: 400,
+    height: 200,
+    parent: mainWindow,
+    modal: true,
+    show: false,
+    icon: `${__dirname}/icons/white.png`,
+    // resizable: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    }
+  })
+
+  // child.setMenu(null)
+  child.setMinimizable(false)
+  child.loadFile(`${__dirname}/choose_color.html`)
   child.once('ready-to-show', () => {
     child.show()
     event.returnValue = null
