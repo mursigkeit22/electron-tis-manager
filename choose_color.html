@@ -26,15 +26,20 @@
     </style>
 </head>
 <body>
-<button class="button" id="green">Green</button>
-<button class="button button2" id="blue">Blue</button>
-<button class="button button3" id="red">Red</button>
-<button class="button button4" id="gray">Gray</button>
-<button class="button button5" id="black">Black</button>
+<button class="button" id="GREEN">Green</button>
+<button class="button button2" id="BLUE">Blue</button>
+<button class="button button3" id="RED">Red</button>
+<button class="button button4" id="GRAY_25">Gray</button>
+<button class="button button5" id="BLACK">Black</button>
+
+<button id="close" >Подтвердить</button>
 
 </body>
 
 <script>
+  const utils = require('./js_code/utils')
+  const constants = require('./js_code/constants_js');
+  const fs = require('fs');
   const buttons = document.getElementsByClassName("button")
   const colorsArray = []
 
@@ -53,6 +58,14 @@
         console.log(colorsArray)
       }
     });}
+
+
+  document.getElementById("close").addEventListener("click", function () {
+
+    utils.logToFile('Closing choose color window')
+    fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`, colorsArray.toString())
+    window.close();
+  })
 </script>
 
 

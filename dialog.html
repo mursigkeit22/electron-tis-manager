@@ -27,6 +27,7 @@
             An example warning alert with an icon
         </div>
     </div>
+    <button id="close" >Ясно-понятно</button>
 </div>
 
 </body>
@@ -50,6 +51,8 @@ function putTextInDialog(document){
     document.getElementById(`${type}_text`).innerHTML = typeAndTitleAndText[2];}
 
 putTextInDialog(document)
+
+  document.getElementById("close").addEventListener("click", function () {window.close();})
 
 </script>
 </html>

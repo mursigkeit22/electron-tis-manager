@@ -4,4 +4,4 @@ log_path = f'{tis_path}logs/'
 utils_path = f'{tis_path}utils/'
 
 names_file = "file_names.txt"
-tasks_file = "tasks_to_execute.txt"
+color_file = "colors.txt"

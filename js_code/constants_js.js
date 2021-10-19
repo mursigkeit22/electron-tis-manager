@@ -5,5 +5,6 @@ module.exports.PATHS = Object.freeze({
   completePath: `${tisPath}complete/`,
   utilsPath: `${tisPath}utils/`,
   logPath: `${tisPath}logs/`,
-  namesFile: 'file_names.txt'
+  namesFile: 'file_names.txt',
+  colorsFile: 'colors.txt'
 })

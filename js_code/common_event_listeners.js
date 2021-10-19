@@ -1,3 +1,4 @@
+const {ipcRenderer: ipc} = require("electron");
 window.addEventListener("error", function (e) {
   // записываем в файл, т.к. ни один способ передачи данных
   // из renderer process в main process и потом обратно у меня не сработал

@@ -20,7 +20,7 @@ Go.addEventListener('click', () => {
   utils.logToFile('OPTIONS:' + options)
   PythonShell.run(path.join(__dirname, '../python_code/entry_python_point.py'), options, (err, results) => {
     utils.logToFile(`options: ${options.args}`)
-    utils.logToElectron(`PYTHONSHELLRUN OPTIONS.ARGS: ${options.args}`) //TODO: check when and why options are empty
+    utils.logToElectron(`PYTHONSHELLRUN OPTIONS.ARGS: ${options.args}`)
     if (err) {
       utils.logToElectron(`PYTHONSHELLRUN ERROR: ${err}`)
       alert(err)
@@ -46,7 +46,7 @@ const buttons = document.getElementsByClassName("btn-mine")
 for (let bn of buttons) {
   const button_id = bn.id
   bn.addEventListener("click", function(){
-    if (button_id === "3") {
+    if (button_id === "3"||button_id === "4" )  {
       ipc.sendSync('choose_color_window')
 
     }
