@@ -2,6 +2,7 @@ const { app, BrowserWindow } = require('electron')
 const { ipcMain } = require('electron')
 const fs = require('fs-extra')
 const constants = require('./js_code/constants_js')
+const myArray = ["empty"]
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -22,6 +23,8 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      additionalArguments: [myArray.toString(), ]
+
 
     }
   })
@@ -36,7 +39,10 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-}
+
+  }
+
+
 
 ipcMain.on('synchronous-message', (event, title, message) => {
   console.log(title, message)
@@ -81,6 +87,7 @@ ipcMain.on('choose_color_window', (event) => {
     parent: mainWindow,
     modal: true,
     show: false,
+    // titleBarStyle: 'hidden',
     icon: `${__dirname}/icons/white.png`,
     // resizable: false,
     webPreferences: {
@@ -89,13 +96,14 @@ ipcMain.on('choose_color_window', (event) => {
     }
   })
 
-  // child.setMenu(null)
-  child.setMinimizable(false)
   child.loadFile(`${__dirname}/choose_color.html`)
+
   child.once('ready-to-show', () => {
     child.show()
-    event.returnValue = null
+    child.on("closed", function () {event.returnValue = "hop"})
+
   })
+
 })
 
 // This method will be called when Electron has finished

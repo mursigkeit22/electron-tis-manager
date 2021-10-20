@@ -33,6 +33,7 @@
 <button class="button button5" id="BLACK">Black</button>
 
 <button id="close" >Подтвердить</button>
+<button id="cancel">Отменить</button>
 
 </body>
 
@@ -64,6 +65,13 @@
 
     utils.logToFile('Closing choose color window')
     fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`, colorsArray.toString())
+    window.close();
+  })
+  document.getElementById("cancel").addEventListener("click", function () {
+
+    utils.logToFile('Closing choose color window - cancel')
+    if (fs.existsSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)) {
+        fs.unlinkSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)}
     window.close();
   })
 </script>

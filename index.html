@@ -51,10 +51,6 @@
     <span id="badge7" class="position-absolute translate-middle p-2 bg-danger border border-light rounded-circle" style='display: none;'></span>
   </button>
 
-  <button id = "8">button</button>
-
-
-
 </div>
 </div>
 
@@ -82,10 +78,6 @@
   const constants = require('./js_code/constants_js')
   const ipc = require('electron').ipcRenderer
 
-  document.getElementById("8").addEventListener("click", function (){
-    const childWindow = window.open('', 'modal')
-    childWindow.open('file://choose_color.html')
-  })
 
 </script>
 

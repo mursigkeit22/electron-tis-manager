@@ -3,6 +3,10 @@ const utils = require('./utils')
 const path = require('path')
 const {arrayFiles} = require("./upload_file_functions");
 let task = undefined;
+const fs = require('fs');
+const constants = require('./constants_js');
+
+
 
 
 
@@ -43,14 +47,21 @@ Go.addEventListener('click', () => {
 
 const buttons = document.getElementsByClassName("btn-mine")
 
+
 for (let bn of buttons) {
   const button_id = bn.id
-  bn.addEventListener("click", function(){
+  bn.addEventListener("click", async function(){
     if (button_id === "3"||button_id === "4" )  {
-      ipc.sendSync('choose_color_window')
 
+      ipc.sendSync('choose_color_window')
+      if (!fs.existsSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)) {
+        console.log("not exist, breaking")
+        return;
+      }
     }
+    console.log("after if window")
     if (!this.classList.contains("active")){
+
       if (task !== undefined){
               document.getElementById(task).classList.remove("active")
             }
@@ -63,5 +74,7 @@ for (let bn of buttons) {
       this.classList.remove("active");
     }
 
+
 })}
+
 
