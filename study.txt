@@ -36,7 +36,13 @@ https://www.stanleyulili.com/node/node-modules-import-and-use-functions-from-ano
 
 =============
 PACKAGING
+electron-builder:
 https://www.electron.build/
+https://stackoverflow.com/questions/51182226/electron-builder-is-not-bundling-the-python-files
+https://stackoverflow.com/questions/58043405/build-standalone-exe-from-electron-app-using-electron-builder
+https://github.com/prisma/prisma/discussions/5200
+
+
 https://stackoverflow.com/questions/31286924/how-to-deploy-an-electron-app-as-an-executable-or-installable-in-windows
 =================
 
