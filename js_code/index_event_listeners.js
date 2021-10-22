@@ -7,11 +7,10 @@ const fs = require('fs');
 const constants = require('./constants_js');
 
 
-
-
-
 const options = {
   pythonPath: path.join(__dirname, '../Python38/python.exe'),
+  // pythonPath: path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), '../Python38/python.exe'),
+  // pythonPath: path('../Python38/python.exe'),
   args: []
 }
 
@@ -22,13 +21,13 @@ Go.addEventListener('click', () => {
   if (!utils.checkIfFilesAdded()) {return}
   options.args.push(task)
   utils.logToFile('OPTIONS:' + options)
+  // PythonShell.run(path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), '../python_code/entry_python_point.py'), options, (err, results) => {
   PythonShell.run(path.join(__dirname, '../python_code/entry_python_point.py'), options, (err, results) => {
     utils.logToFile(`options: ${options.args}`)
     utils.logToElectron(`PYTHONSHELLRUN OPTIONS.ARGS: ${options.args}`)
     if (err) {
-      utils.logToElectron(`PYTHONSHELLRUN ERROR: ${err}`)
+      utils.logToFile(`PYTHONSHELLRUN ERROR: ${err}`)
       alert(err)
-      utils.logToElectron(`PYTHONSHELLRUN ERROR: ${err}`)
     }
     utils.logToElectron(results)
     utils.logToElectron(`RESULT: ${results}`)

@@ -1,5 +1,5 @@
 {
-  "name": "tis_manager",
+  "name": "text-in-scope-manager",
   "version": "1.0.0",
   "description": "hop",
   "main": "main.js",
@@ -21,12 +21,12 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
     "electron": "^15.0.0",
+    "electron-builder": "^22.13.1",
     "standard": "^16.0.3"
   },
   "dependencies": {
     "custom-alert": "^2.2.0",
     "dialog": "^0.3.1",
-    "electron-builder": "^22.13.1",
     "electron-custom-dialog": "^1.0.0",
     "electron-log": "^4.4.1",
     "electron-squirrel-startup": "^1.0.0",

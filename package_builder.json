@@ -1,0 +1,70 @@
+{
+  "name": "text-in-scope-manager",
+  "productName": "text-in-scope-manager",
+  "version": "1.0.0",
+  "description": "hop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "repository": "",
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Valerie Shelgunova",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^15.0.0",
+    "electron-builder": "^22.13.1",
+    "electron-packager": "^15.4.0"
+  },
+  "dependencies": {
+    "dialog": "^0.3.1",
+    "electron-log": "^4.4.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^10.0.0",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "python-shell": "^3.0.0"
+  },
+  "build": {
+    "appId": "com.electron.app",
+    "asar": true,
+    "asarUnpack": [
+      "**/Python38/*",
+      "**/python_code/entry_python_point.py",
+      "**/python_code/hide.py",
+      "**/python_code/utils_py.py",
+      "**/python_code/constants.py"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "C:\\mein\\job\\techinput\\electron-tis-manager\\icons\\white.png"
+    },
+    "portable": {
+      "unicode": false,
+      "artifactName": "my_electron_app.exe"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}",
+      "Python38/*",
+      "Python38/",
+      "**/Python38/*",
+      "/Python38/*",
+      "/Python38/"
+    ]
+  }
+}
