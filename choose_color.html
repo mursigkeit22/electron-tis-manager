@@ -1,57 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:>
 <head>
     <meta charset="UTF-8">
     <title>Выбрать цвет</title>
-    <style>
-        .button {
+    <link rel="stylesheet" href="css/choose_color.css">
 
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border: solid 2px #4CAF50;
-
-        }
-
-        .button1 {background-color: #FFFF00; border-color: #FFFF00; color: black;}
-        .button2 {background-color: #00FF00; border-color: #00FF00; color: black;}
-        .button3 {background-color: #00FFFF; border-color: #00FFFF; color: black;}
-        .button4 {background-color: #FF00FF; border-color: #FF00FF;}
-        .button5 {background-color: #0000FF; border-color: #0000FF;}
-        .button6 {background-color: #FF0000; border-color: #FF0000;}
-        .button7 {background-color: #000080; border-color: #000080;}
-        .button8 {background-color: #008080; border-color: #008080;}
-        .button9 {background-color: #008000; border-color: #008000;}
-        .button10 {background-color: #800080; border-color: #800080;}
-        .button11 {background-color: #800000; border-color: #800000;}
-        .button12 {background-color: #808000; border-color: #808000;}
-        .button13 {background-color: #808080; border-color: #808080;}
-        .button14 {background-color: #C0C0C0; border-color: #C0C0C0; color: black;}
-        .button15 {background-color: #000000; border-color: #000000;}
-        .active {background-color: white; color: black;}
-    </style>
 </head>
 <body>
-<button class="button button1" id="YELLOW">YELLOW</button>
-<button class="button button2" id="BRIGHT_GREEN">BRIGHT_GREEN</button>
-<button class="button button3" id="TURQUOISE">TURQUOISE</button>
+<div class="color_block">
+<button class="button button1 btn" id="YELLOW">YELLOW</button>
+<button class="button button2 btn" id="BRIGHT_GREEN">BRIGHT GREEN</button>
+<button class="button button3 btn" id="TURQUOISE">TURQUOISE</button>
 <button class="button button4" id="PINK">PINK</button>
 <button class="button button5" id="BLUE">BLUE</button>
+<div class="btn-group" role="group">
 <button class="button button6" id="RED">RED</button>
-<button class="button button7" id="DARK_BLUE">DARK_BLUE</button>
+<button class="button button7" id="DARK_BLUE">DARK BLUE</button>
 <button class="button button8" id="TEAL">TEAL</button>
 <button class="button button9" id="GREEN">GREEN</button>
 <button class="button button10" id="VIOLET">VIOLET</button>
-<button class="button button11" id="DARK_RED">DARK_RED</button>
-<button class="button button12" id="DARK_YELLOW">DARK_YELLOW</button>
+</div>
+<div class="btn-group" role="group">
+<button class="button button11" id="DARK_RED">DARK RED</button>
+<button class="button button12" id="DARK_YELLOW">DARK YELLOW</button>
 <button class="button button13" id="GRAY_50">GRAY_50</button>
 <button class="button button14" id="GRAY_25">GRAY_25</button>
 <button class="button button15" id="BLACK">BLACK</button>
+</div>
+</div>
 
 <button id="close" >Подтвердить</button>
 <button id="cancel">Отменить</button>
@@ -60,40 +36,40 @@
 
 <script>
   const utils = require('./js_code/utils')
-  const constants = require('./js_code/constants_js');
-  const fs = require('fs');
-  const buttons = document.getElementsByClassName("button")
+  const constants = require('./js_code/constants_js')
+  const fs = require('fs')
+  const buttons = document.getElementsByClassName('button')
   const colorsArray = []
 
   for (let bn of buttons) {
     const button_id = bn.id
-    bn.addEventListener("click", function()
+    bn.addEventListener('click', function()
     {
-      if (this.classList.contains("active"))
+      if (this.classList.contains('active'))
       {
-        this.classList.remove("active");
+        this.classList.remove('active')
         colorsArray.splice(colorsArray.indexOf(button_id), 1)
         console.log(colorsArray)
       } else {
-        this.classList.add("active");
+        this.classList.add('active')
         colorsArray.push(button_id)
         console.log(colorsArray)
       }
-    });}
+    })}
 
 
-  document.getElementById("close").addEventListener("click", function () {
+  document.getElementById('close').addEventListener('click', function () {
 
     utils.logToFile('Closing choose color window')
     fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`, colorsArray.toString())
-    window.close();
+    window.close()
   })
-  document.getElementById("cancel").addEventListener("click", function () {
+  document.getElementById('cancel').addEventListener('click', function () {
 
     utils.logToFile('Closing choose color window - cancel')
     if (fs.existsSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)) {
         fs.unlinkSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)}
-    window.close();
+    window.close()
   })
 </script>
 

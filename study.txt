@@ -52,6 +52,8 @@ https://imagecolorpicker.com/
 #86e0fa light
 #2ec7f7 bright
 #3caed6 dark
+palette
+https://coolors.co/palettes/trending
 ===============
 Buttons
 красивые эффекты

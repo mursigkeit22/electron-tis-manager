@@ -82,14 +82,15 @@ ipcMain.on('dialog_window', (event) => {
 
 ipcMain.on('choose_color_window', (event) => {
   const child = new BrowserWindow({
-    width: 400,
-    height: 200,
+    width: 515,
+    height: 400,
     parent: mainWindow,
     modal: true,
     show: false,
-    // titleBarStyle: 'hidden',
+    titleBarStyle: 'hidden',
+    transparent: true,
     icon: `${__dirname}/icons/white.png`,
-    // resizable: false,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
