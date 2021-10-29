@@ -1,12 +1,12 @@
 {
   "name": "text-in-scope-manager",
+  "productName": "text-in-scope-manager",
   "version": "1.0.0",
-  "description": "hop",
+  "description": "Tool for hiding text in word documents.",
   "main": "main.js",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "start": "electron .",
+    "dist": "electron-builder"
   },
   "repository": "",
   "keywords": [
@@ -15,19 +15,12 @@
   "author": "Valerie Shelgunova",
   "license": "CC0-1.0",
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.61",
-    "@electron-forge/maker-deb": "^6.0.0-beta.61",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
-    "@electron-forge/maker-zip": "^6.0.0-beta.61",
     "electron": "^15.0.0",
     "electron-builder": "^22.13.1",
-    "standard": "^16.0.3"
+    "electron-packager": "^15.4.0"
   },
   "dependencies": {
-    "custom-alert": "^2.2.0",
     "dialog": "^0.3.1",
-    "electron-custom-dialog": "^1.0.0",
     "electron-log": "^4.4.1",
     "electron-squirrel-startup": "^1.0.0",
     "fs": "^0.0.1-security",
@@ -36,31 +29,36 @@
     "popper.js": "^1.16.1",
     "python-shell": "^3.0.0"
   },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "tis_manager"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+  "build": {
+    "appId": "com.electron.app",
+    "asar": true,
+    "asarUnpack": [
+      "**/Python38/**",
+      "**/python_code/*"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": ".\\icons\\green2.png"
+    },
+    "portable": {
+      "unicode": false,
+      "artifactName": "Text-In-Scope-Manager.exe"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}",
+      "**/Python38/*"
+
+    ]
   }
 }
