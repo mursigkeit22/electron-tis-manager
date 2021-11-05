@@ -62,4 +62,18 @@ active button state
 https://redstapler.co/toggle-active-button-state-javascript/
 кнопки
 https://www.w3schools.com/css/css3_buttons.asp
+===================
+change docx library:
+https://github.com/python-openxml/python-docx/pull/716/commits/c09da22afaebaed2f0a3139de6ba46c8824f179e
+
+docx/__init__.py
+31 + PartFactory.part_type_for[CT.WML_DOCUMENT_MACRO_ENABLED_MAIN] = DocumentPart
+docx/api.py
+   - if document_part.content_type != CT.WML_DOCUMENT_MAIN:
+26 + if (document_part.content_type != CT.WML_DOCUMENT_MAIN) and (document_part.content_type != CT.WML_DOCUMENT_MACRO_ENABLED_MAIN):
+
+docx/opc/constants.py
+283 +    WML_DOCUMENT_MACRO_ENABLED_MAIN = (
+284 +        'application/vnd.ms-word.document.macroEnabled.main+xml'
+285 +    )
 
