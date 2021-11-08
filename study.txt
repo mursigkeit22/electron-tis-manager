@@ -76,4 +76,14 @@ docx/opc/constants.py
 283 +    WML_DOCUMENT_MACRO_ENABLED_MAIN = (
 284 +        'application/vnd.ms-word.document.macroEnabled.main+xml'
 285 +    )
+=============
+palette Olya
+#f2e0ce фон
+#faf3ec кнопки
+#bc8e6c кнопка выбрать
+#906b42 граница кнопки выбрать
+#c39a7b разделитель
+
+
+
 
