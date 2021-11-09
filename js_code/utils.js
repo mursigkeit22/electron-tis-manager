@@ -22,6 +22,6 @@ function checkIfFilesAdded(){
   return text.length !== 0;
 
 }
-//Todo:
+
 module.exports = { logToElectron, logToFile, objectListToString, checkIfFilesAdded }
 

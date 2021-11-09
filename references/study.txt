@@ -63,6 +63,9 @@ https://redstapler.co/toggle-active-button-state-javascript/
 кнопки
 https://www.w3schools.com/css/css3_buttons.asp
 ===================
+scroll bar
+https://stackoverflow.com/questions/50817727/change-scrollbar-height
+====================
 change docx library:
 https://github.com/python-openxml/python-docx/pull/716/commits/c09da22afaebaed2f0a3139de6ba46c8824f179e
 
