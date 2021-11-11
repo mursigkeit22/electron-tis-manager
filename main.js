@@ -19,12 +19,12 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 600,
+    resizable: false,
+    autoHideMenuBar: true,
 
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      additionalArguments: [myArray.toString(), ]
-
 
     }
   })

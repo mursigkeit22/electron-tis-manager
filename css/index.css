@@ -6,161 +6,61 @@ body{
 
 #leftbox{
     position: absolute;
-    display: flex;
-    align-items: center;
     left:1%;
     width: 35%;
     height: 100%;
-    /*top: 2%;*/
+    display: flex;
+    align-items: center;
     overflow-y: scroll;
 }
-#rightbox{
-    background-color: whitesmoke;
-    border-radius: 10px;
-    position: absolute;
-    right:1%;
-    width: 60%;
-    top: 20%;
-    height: 75%;
-
-}
-#nameList{
-    background-color: white;
-    border-radius: 10px;
-    position: absolute;
-    right:1%;
-    left:1%;
-    width: 98%;
-    top: 1%;
-    bottom: 1%;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: medium;
-    /*padding-bottom: 20px;*/
-    margin-left: 5px;
-    line-height: 1.4;
-    overflow-y: auto;
-    /*padding-left: 10px;*/
-    box-sizing: border-box;
-}
-
-#leftbox::-webkit-scrollbar-track, #nameList::-webkit-scrollbar-track {
+#leftbox::-webkit-scrollbar-track  {
     margin-top: 20px;
     margin-bottom: 20px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: #bc8e6c;
 }
-
-#leftbox::-webkit-scrollbar, #nameList::-webkit-scrollbar {
+#leftbox::-webkit-scrollbar  {
     width: 12px;
     height:12px;
     background-color: #f2e0ce;
 }
-
-#leftbox::-webkit-scrollbar-thumb, #nameList::-webkit-scrollbar-thumb {
+#leftbox::-webkit-scrollbar-thumb  {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #bc8e6c;
     border: 1px solid #333333;
-            /*#f2e0ce;*/
 }
 
-
-#selectFiles{
-    position: absolute;
-    top: 2%;
-    right: 19%;
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.del{
-    border-radius: 5px;
-    cursor: pointer;
-    border: none;
-    background: #FFFF99;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    /*padding: 5px;*/
-}
-.go{
-    position: absolute;
-    /*background-color: whitesmoke;*/
-    left:19%;
-    /*margin-left:-5%;*/
-    transform: translate(-50%);
-    /*width: 15%;*/
-    /*height:8%;*/
-    bottom: 1%;
+#nameList{
+    background-color: white;
     border-radius: 10px;
-    /*font: 200% "Segoe UI Semilight";*/
-    /*font: 150% Tahoma;*/
-    /*color: #333;*/
-    cursor: pointer;
-    /*outline: none;*/
-    /*border: 1px solid floralwhite;*/
+    position: absolute;
+    right:2%;
+    width: 60%;
+    top: 20%;
+    bottom: 10%;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: medium;
+    padding-top: 10px;
+    margin-left: 5px;
+    line-height: 1.4;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
-.inputLabel{
+
+
+
+#format_info{
     position: absolute;
     right: 23%;
+    top: 14%;
     display: inline;
-    /*background-color: floralwhite;*/
-    width: 20%;
-    height: 9%;
-    top: 6%;
-    border-radius: 10px;
-    /*font: 150% Tahoma;*/
-    text-align: center;
-    vertical-align: center;
-    /*color: #333;*/
-    cursor: pointer;
-    /*outline: none;*/
-    /*line-height: 40px;*/
-
+    font: 90% Tahoma;
 }
 
 
-.push:hover{
-    /*background-color: rgba(34,179,248,255);*/
-    border: 2px solid white;
-    /*color: white;*/
-    color:black;
-    font: 180% Tahoma ;
-    line-height: 40px;
-}
-
-.inputLabel:hover, .go:hover {
-    background-color: whitesmoke;
-    border: 2px solid black;
-    color: #333;
-}
-.noHover{
-    pointer-events: none;
-}
-
-.btn-mine {
-    background: #faf3ec;
-    border-radius: 8px;
-    border: 1px solid #bc8e6c;
-    font-size: 30px;
-    margin-bottom: 3px;
-    margin-left: 5px;
-    width: 95%;
-    height: 90%;
-}
-
-.d-grid {
-    /*padding-top: 15%;*/
-}
-.active {
-    background: white !important;
-    /*border: 2px solid #333333 !important;*/
-
-}
 
 #wait{
     width: 40%;
@@ -216,6 +116,16 @@ body{
 /*    width: fit-content;*/
 /*    height: fit-content;*/
 /*    display: block;*/
+/*}*/
+
+/*#rightbox{*/
+/*    border-radius: 10px;*/
+/*    position: absolute;*/
+/*    right:1%;*/
+/*    width: 60%;*/
+/*    top: 20%;*/
+/*    height: 75%;*/
+
 /*}*/
 
 

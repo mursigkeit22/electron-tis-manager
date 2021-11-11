@@ -1,6 +1,6 @@
 {
-  "name": "text-in-scope-manager",
-  "productName": "text-in-scope-manager",
+  "name": "Text-In-Scope-Manager",
+  "productName": "Text-In-Scope-Manager",
   "version": "1.0.0",
   "description": "Tool for hiding text in word documents.",
   "main": "main.js",

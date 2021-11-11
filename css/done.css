@@ -7,10 +7,10 @@
     border-radius: 10px;
     transform: translate(-50%);
     position: absolute;
-    border: 1px solid floralwhite;
-    background-color: whitesmoke;
-    font: 100% Tahoma;
-    color: #333;
+    border: 1px solid #35AC4B;
+    background-color: #4fc968;
+    font: 150% Tahoma bold;
+    color: white;
     cursor: pointer;
 }
 .ready {
@@ -20,15 +20,13 @@
     left: 30%;
     text-align: center;
     display: inline;
-
-
-
 }
+
 #first_line{
     height: 20%;
     border-radius: 10px;
     font: 50px/70px Tahoma;
-    color: #333;
+    color: #35AC4B;
     top: 30%
 }
 #second_line{

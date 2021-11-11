@@ -2,58 +2,61 @@
 <html lang="">
 <head>
   <meta charset="utf-8">
-  <title>TIS Manager</title>
+  <title>Text-In-Scope-Manager</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/buttons.css">
   <link rel="stylesheet" href="css/done.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </head>
 
 <body >
 
-<label id='inputLabel' for="selectFiles" class="btn btn-dark inputLabel">Выбрать файлы</label>
+<label id='inputLabel' for="selectFiles" class="inputLabel">Выбрать файлы</label>
 
 <input type="file" id="selectFiles" multiple accept=".docx, .docm"
        onchange="upload_helpers.writeFileNames()">
+
+<div id="format_info"> Доступные форматы: .docx и .docm</div>
+
 
 <div id="leftbox">
 <div class="d-grid gap-2">
 
 
-  <button class="btn-mine"  type="button" id="1">Скрыть текст, выделенный любым цветом
+  <button class="btn-mine"  type="button" id="1">Скрыть текст, выделенный <span style="background-color: #e3e370">лю</span><span style="background-color: #db9c9c">б</span><span style="background-color: lightgreen">ым</span> цветом
   </button>
 
-  <button class="btn-mine" type="button" id="2">Скрыть текст, который не выделен никаким цветом </button>
+  <button class="btn-mine" type="button" id="2">Скрыть текст, который <u>НЕ</u> выделен никаким цветом </button>
 
-  <button class="btn-mine"  type="button" id="3">Выбрать цвет и скрыть текст, выделенный этим цветом
+  <button class="btn-mine"  type="button" id="3"><span style="background-color: lightgreen">Выбрать цвет</span> и скрыть текст, выделенный этим цветом
   </button>
 
   <button class="btn-mine" type="button"  id="4">
-    Выбрать цвет и скрыть текст, не выделенный этим цветом
+    <span style="background-color: lightgreen">Выбрать цвет</span> и скрыть текст, <u>НЕ</u> выделенный этим цветом
   </button>
 
 
-  <button class="btn-mine"  type="button" id="5">Скрыть текст, выделенный курсивом
+  <button class="btn-mine"  type="button" id="5">Скрыть текст, выделенный <i>курсивом</i>
   </button>
 
   <button class="btn-mine" type="button" id="6">
-    Скрыть текст, не выделенный курсивом
+    Скрыть текст, <u>НЕ</u> выделенный <i>курсивом</i>
   </button>
 
 
-  <button class="btn-mine"  type="button" id="7">Скрыть зачеркнутый текст
+  <button class="btn-mine"  type="button" id="7">Скрыть <del>зачеркнутый</del> текст
   </button>
 
+
 </div>
 </div>
 
+<ol type = "1" id="nameList"></ol>
 
-<div id="rightbox">
-  <ol type = "1" id="nameList"></ol>
-  <button id="go" class="btn btn-dark btn-lg go" type="button">Выполнить!</button>
-
-</div>
+<button id="go" class="btn-lg go" type="button">Выполнить!</button>
 
 <div id="wait" style='display: none;'>Пожалуйста, подождите, это может занять пару минут...</div>
 

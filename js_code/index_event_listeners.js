@@ -33,8 +33,8 @@ Go.addEventListener('click', () => {
   })
   document.getElementById('leftbox').style.display = 'none'
   document.getElementById('inputLabel').style.display = 'none'
-  document.getElementById('rightbox').style.display = 'none'
   document.getElementById('nameList').style.display = 'none'
+  document.getElementById('format_info').style.display = 'none'
 
   document.getElementById('go').style.display = 'none'
   document.body.style.cursor = 'wait'
