@@ -15,17 +15,14 @@
     top: 3%;
     width: 20%;
     height: 9%;
-
     display: flex;
     align-items: center;
     justify-content:center;
-
     border-radius: 10px;
     border: 1px solid #906b42;
     font: bold 100% Tahoma ;
     background-color: #bc8e6c;
     color: white;
-
     cursor: pointer;
 }
 

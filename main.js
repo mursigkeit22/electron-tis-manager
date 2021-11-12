@@ -1,8 +1,7 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, screen } = require('electron')
 const { ipcMain } = require('electron')
 const fs = require('fs-extra')
 const constants = require('./js_code/constants_js')
-const myArray = ["empty"]
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -55,12 +54,15 @@ ipcMain.on('load-page', (event, arg) => {
 })
 
 ipcMain.on('dialog_window', (event) => {
+  const { screen } = require('electron')
+
   const child = new BrowserWindow({
     width: 400,
     height: 200,
     parent: mainWindow,
     modal: true,
     show: false,
+
     icon: `${__dirname}/icons/white.png`,
     // resizable: false,
     webPreferences: {
@@ -81,16 +83,26 @@ ipcMain.on('dialog_window', (event) => {
 
 
 ipcMain.on('choose_color_window', (event) => {
+   let display = screen.getPrimaryDisplay();
+  let width = display.bounds.width;
+  const displays = screen.getAllDisplays()
+  const externalDisplay = displays.find((display) => {
+    return display.bounds.x !== 0 || display.bounds.y !== 0
+  })
+  const primaryDisplay = screen.getPrimaryDisplay()
+  let [x, y] = mainWindow.getPosition();
   const child = new BrowserWindow({
-    width: 515,
-    height: 400,
+    width: 340,
+    height: 250,
     parent: mainWindow,
     modal: true,
     show: false,
-    titleBarStyle: 'hidden',
-    transparent: true,
-    icon: `${__dirname}/icons/white.png`,
     resizable: false,
+    movable: true,
+    x: x + 500,
+    y: y + 200,
+    frame: false,
+    // icon: `${__dirname}/icons/white.png`,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false

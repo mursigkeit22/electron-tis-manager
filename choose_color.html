@@ -27,10 +27,12 @@
 <button class="button button14" id="GRAY_25">GRAY_25</button>
 <button class="button button15" id="BLACK">BLACK</button>
 </div>
-</div>
 
-<button id="close" >Подтвердить</button>
-<button id="cancel">Отменить</button>
+</div>
+<div class="control_buttons">
+<button id="confirm" class="confirm" >Подтвердить</button>
+<button id="cancel" class = "cancel">Отменить</button>
+    </div>
 
 </body>
 
@@ -58,7 +60,7 @@
     })}
 
 
-  document.getElementById('close').addEventListener('click', function () {
+  document.getElementById('confirm').addEventListener('click', function () {
 
     utils.logToFile('Closing choose color window')
     fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`, colorsArray.toString())

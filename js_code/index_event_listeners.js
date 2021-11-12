@@ -17,6 +17,7 @@ Go.addEventListener('click', () => {
 
 
   if (!utils.checkIfFilesAdded()) {return}
+  if (typeof task === 'undefined') {return}
   options.args.push(task)
   utils.logToFile('OPTIONS:' + options)
      PythonShell.run(path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), '../python_code/entry_python_point.py'), options, (err, results) => {

@@ -1,22 +1,47 @@
-.color_block {
-
-    width: 500px;
-    /*margin: 0 auto;*/
-
+.control_buttons {
+    display: inline-block;
+}
+html{
+    border-style: solid;
+    border-color: slategray;
+    border-width: 2px;
+    overflow: hidden;
+}
+.confirm {
+    position: relative;
+    top: 8px;
+    height: 30px;
+    width: 90px;
+    color:white;
+    border: 1px solid whitesmoke;
+    border-radius: 7px;
+    background-color: #35AC4B;
+}
+.cancel {
+    position: relative;
+    left: 85%;
+    top: 8px;
+    height: 30px;
+    width: 80px;
+    border-radius: 7px;
+    border: 1px solid whitesmoke;
+    font: 100% "Times New Roman";
+    background-color: lightcoral;
 }
 .button {
-
     color: white;
     text-align: center;
     overflow-wrap: break-word;
     display: inline-block;
     float: left;
     cursor: pointer;
-    border: solid 2px;
-    width:100px;
-    height: 100px;
+    border: solid 8px;
+    width:60px;
+    height: 60px;
+    margin: 2px;
     border-radius: 10px;
-
+    font-size: 55%;
+    padding: 0;
 }
 
 .button1 {background-color: #FFFF00; border-color: #FFFF00; color: black;}
