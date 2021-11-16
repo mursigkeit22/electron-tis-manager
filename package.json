@@ -17,7 +17,8 @@
   "devDependencies": {
     "electron": "^15.0.0",
     "electron-builder": "^22.13.1",
-    "electron-packager": "^15.4.0"
+    "electron-packager": "^15.4.0",
+    "standard": "^16.0.4"
   },
   "dependencies": {
     "dialog": "^0.3.1",
@@ -58,7 +59,6 @@
       "!**/{appveyor.yml,.travis.yml,circle.yml}",
       "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}",
       "**/Python38/*"
-
     ]
   }
 }

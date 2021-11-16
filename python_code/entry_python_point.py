@@ -1,8 +1,6 @@
 import sys
-
 import constants
 import utils_py
-
 from hide import hide
 
 utils_py.log_in_file(f"Get_the_job_done, ARGS: {sys.argv}")

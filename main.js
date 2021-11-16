@@ -1,4 +1,4 @@
-const { app, BrowserWindow, screen } = require('electron')
+const { app, BrowserWindow } = require('electron')
 const { ipcMain } = require('electron')
 const fs = require('fs-extra')
 const constants = require('./js_code/constants_js')
@@ -20,11 +20,9 @@ function createWindow () {
     height: 600,
     resizable: false,
     autoHideMenuBar: true,
-
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
-
+      contextIsolation: false
     }
   })
 
@@ -38,10 +36,7 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-
-  }
-
-
+}
 
 ipcMain.on('synchronous-message', (event, title, message) => {
   console.log(title, message)
@@ -54,15 +49,12 @@ ipcMain.on('load-page', (event, arg) => {
 })
 
 ipcMain.on('dialog_window', (event) => {
-  const { screen } = require('electron')
-
   const child = new BrowserWindow({
     width: 400,
     height: 200,
     parent: mainWindow,
     modal: true,
     show: false,
-
     icon: `${__dirname}/icons/white.png`,
     // resizable: false,
     webPreferences: {
@@ -70,7 +62,6 @@ ipcMain.on('dialog_window', (event) => {
       contextIsolation: false
     }
   })
-
 
   // child.setMenu(null)
   child.setMinimizable(false)
@@ -81,16 +72,8 @@ ipcMain.on('dialog_window', (event) => {
   })
 })
 
-
 ipcMain.on('choose_color_window', (event) => {
-   let display = screen.getPrimaryDisplay();
-  let width = display.bounds.width;
-  const displays = screen.getAllDisplays()
-  const externalDisplay = displays.find((display) => {
-    return display.bounds.x !== 0 || display.bounds.y !== 0
-  })
-  const primaryDisplay = screen.getPrimaryDisplay()
-  let [x, y] = mainWindow.getPosition();
+  const [x, y] = mainWindow.getPosition()
   const child = new BrowserWindow({
     width: 340,
     height: 250,
@@ -102,7 +85,6 @@ ipcMain.on('choose_color_window', (event) => {
     x: x + 500,
     y: y + 200,
     frame: false,
-    // icon: `${__dirname}/icons/white.png`,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
@@ -113,10 +95,8 @@ ipcMain.on('choose_color_window', (event) => {
 
   child.once('ready-to-show', () => {
     child.show()
-    child.on("closed", function () {event.returnValue = "hop"})
-
+    child.on('closed', function () { event.returnValue = 'hop' })
   })
-
 })
 
 // This method will be called when Electron has finished

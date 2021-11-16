@@ -1,35 +1,31 @@
 const { PythonShell } = require('python-shell')
+const ipc = require('electron').ipcRenderer
 const utils = require('./utils')
 const path = require('path')
-const {arrayFiles} = require("./upload_file_functions");
-let task = undefined;
-const fs = require('fs');
-const constants = require('./constants_js');
-
+const fs = require('fs')
+const constants = require('./constants_js')
+let task
 
 const options = {
-   pythonPath: path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), '../Python38/python.exe'),
+  pythonPath: path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), '../Python38/python.exe'),
   args: []
 }
 
 const Go = document.getElementById('go')
 Go.addEventListener('click', () => {
-
-
-  if (!utils.checkIfFilesAdded()) {return}
-  if (typeof task === 'undefined') {return}
+  if (!utils.checkIfFilesAdded()) { return }
+  if (typeof task === 'undefined') { return }
   options.args.push(task)
   utils.logToFile('OPTIONS:' + options)
-     PythonShell.run(path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), '../python_code/entry_python_point.py'), options, (err, results) => {
-
+  PythonShell.run(path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), '../python_code/entry_python_point.py'), options, (err, results) => {
     utils.logToFile(`options: ${options.args}`)
-    utils.logToElectron(`PYTHONSHELLRUN OPTIONS.ARGS: ${options.args}`)
+    console.log(`PYTHONSHELLRUN OPTIONS.ARGS: ${options.args}`)
     if (err) {
       utils.logToFile(`PYTHONSHELLRUN ERROR: ${err}`)
-      alert(err)
+      window.alert(err)
     }
-    utils.logToElectron(results)
-    utils.logToElectron(`RESULT: ${results}`)
+    console.log(results)
+    console.log(`RESULT: ${results}`)
     ipc.send('load-page', '/done.html')
   })
   document.getElementById('leftbox').style.display = 'none'
@@ -42,37 +38,29 @@ Go.addEventListener('click', () => {
   document.getElementById('wait').style.display = 'inline'
 })
 
+const buttons = document.getElementsByClassName('btn-mine')
 
-const buttons = document.getElementsByClassName("btn-mine")
-
-
-for (let bn of buttons) {
-  const button_id = bn.id
-  bn.addEventListener("click", async function(){
-    if (button_id === "3"||button_id === "4" )  {
-
+for (const bn of buttons) {
+  const buttonId = bn.id
+  bn.addEventListener('click', async function () {
+    if ((buttonId === '3' || buttonId === '4') && (!this.classList.contains('active'))) { // если кнопка уже активна, то надо сделать её неактивной, не надо снова выбирать цвета
       ipc.sendSync('choose_color_window')
-      if (!fs.existsSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)) {
-        console.log("not exist, breaking")
-        return;
+      if (!fs.existsSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)) { // если не выбрали ни одного цвета, то не делаем кнопку активной
+        console.log('not exist, breaking')
+        return
       }
     }
-    console.log("after if window")
-    if (!this.classList.contains("active")){
-
-      if (task !== undefined){
-              document.getElementById(task).classList.remove("active")
-            }
-      this.classList.add("active");
-      task = button_id
-      console.log("Adding Active")
+    console.log('after if window')
+    if (!this.classList.contains('active')) {
+      if (task !== undefined) {
+        document.getElementById(task).classList.remove('active')
+      }
+      this.classList.add('active')
+      task = buttonId
+      console.log('Adding Active')
+    } else {
+      task = undefined
+      this.classList.remove('active')
     }
-    else {
-      task = undefined;
-      this.classList.remove("active");
-    }
-
-
-})}
-
-
+  })
+}

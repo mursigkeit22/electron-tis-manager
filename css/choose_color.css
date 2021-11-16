@@ -26,7 +26,8 @@ html{
     border-radius: 7px;
     border: 1px solid whitesmoke;
     font: 100% "Times New Roman";
-    background-color: lightcoral;
+    color: white;
+    background-color: darkgrey;
 }
 .button {
     color: white;

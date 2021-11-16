@@ -61,16 +61,20 @@
 
 
   document.getElementById('confirm').addEventListener('click', function () {
-
-    utils.logToFile('Closing choose color window')
-    fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`, colorsArray.toString())
+    utils.logToFile('Closing choose_color_window - confirm')
+    if (colorsArray.length) { // если выбрали хотя бы один цвет
+    fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`, colorsArray.toString())}
+    else { // если не выбрали ни одного цвета в этот раз, то проверяем, не осталось ли заполненного файла с прошлого раза
+      utils.deleteColorsFile()
+    }
     window.close()
   })
+
+
   document.getElementById('cancel').addEventListener('click', function () {
 
-    utils.logToFile('Closing choose color window - cancel')
-    if (fs.existsSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)) {
-        fs.unlinkSync(`${constants.PATHS.utilsPath}${constants.PATHS.colorsFile}`)}
+    utils.logToFile('Closing choose_color_window - cancel')
+    utils.deleteColorsFile()
     window.close()
   })
 </script>

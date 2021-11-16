@@ -20,21 +20,27 @@ https://www.electronjs.org/docs/api/ipc-main
 ? https://www.electronjs.org/docs/api/ipc-renderer
 альтернатива https://www.npmjs.com/package/@electron/remote
 =====================================
+fix code style
+https://standardjs.com/
+npx standard
+npx standard --fix
+
+
 coding-style advice
 https://blog.risingstack.com/javascript-clean-coding-best-practices-node-js-at-scale/
 https://www.electronjs.org/docs/development/coding-style
 https://github.com/airbnb/javascript
-fix code style
-https://standardjs.com/
-
-try js-css-html
-https://jsfiddle.net/
 =================
 import
 https://www.stanleyulili.com/node/node-modules-import-and-use-functions-from-another-file/
 
-
 =============
+try js-css-html
+https://jsfiddle.net/
+====================
+test
+https://jestjs.io/docs/getting-started
+===========================
 PACKAGING
 electron-builder:
 https://www.electron.build/

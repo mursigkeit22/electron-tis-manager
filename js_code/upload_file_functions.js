@@ -9,10 +9,10 @@ function rewrite () {
   utils.logToFile('In rewrite')
   fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, '')
   for (const el of arrayFiles) {
-    fs.appendFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, el.name+"\n")
-    fs.appendFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, el.path+"\n")
+    fs.appendFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, el.name + '\n')
+    fs.appendFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, el.path + '\n')
   }
-  let text = fs.readFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, 'utf8')
+  const text = fs.readFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, 'utf8')
   fs.writeFileSync(`${constants.PATHS.utilsPath}${constants.PATHS.namesFile}`, text)
 }
 
@@ -32,12 +32,12 @@ function showDialogDuplicateFiles (badNames) {
 
   if (badNames.length === 1) {
     fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-      "warning??Oops! I did it again??"+'file ' + badNames + ' is already added')
+      'warning??Oops! I did it again??' + 'file ' + badNames + ' is already added')
     ipcRenderer.sendSync('dialog_window')
   }
   if (badNames.length > 1) {
     fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-        "warning??Oops! I did it again??"+'files ' + badNames + ' are already added')
+      'warning??Oops! I did it again??' + 'Файлы ' + badNames + ' уже добавлены.')
     ipcRenderer.sendSync('dialog_window')
   }
 }
@@ -50,7 +50,7 @@ function iterateThroughUploadedFiles (uploadedFiles, filesListText) {
   for (const file of uploadedFiles.files) {
     globalFileIdNumber++
     if (nameAlreadyInList(file.name)) {
-      badNames.push(file.name)
+      badNames.push(" "+file.name)
       continue
     }
 
@@ -83,7 +83,7 @@ function nameAlreadyInList (name) {
 }
 function writeFileNames () {
   utils.logToFile('In writeFileNames')
-  utils.logToElectron(utils.objectListToString(arrayFiles))
+  console.log(utils.objectListToString(arrayFiles))
 
   const uploadedFiles = document.getElementById('selectFiles')
   const filesListText = document.getElementById('nameList').innerHTML
