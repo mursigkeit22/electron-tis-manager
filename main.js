@@ -56,7 +56,8 @@ ipcMain.on('dialog_window', (event) => {
     modal: true,
     show: false,
     icon: `${__dirname}/icons/white.png`,
-    // resizable: false,
+    resizable: false,
+    autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false

@@ -32,12 +32,12 @@ function showDialogDuplicateFiles (badNames) {
 
   if (badNames.length === 1) {
     fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-      'warning??Oops! I did it again??' + 'file ' + badNames + ' is already added')
+      'warning??Упс!??' + badNames)
     ipcRenderer.sendSync('dialog_window')
   }
   if (badNames.length > 1) {
     fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-      'warning??Oops! I did it again??' + 'Файлы ' + badNames + ' уже добавлены.')
+      'warning??Упс!??' + badNames)
     ipcRenderer.sendSync('dialog_window')
   }
 }
