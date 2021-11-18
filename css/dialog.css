@@ -9,7 +9,7 @@ body{
     position: relative;
 }
 .warning_text{
-    height: 99px;
+    height: 95px;
     width:99%;
     position:absolute;
     overflow: auto;

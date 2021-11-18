@@ -55,7 +55,7 @@ ipcMain.on('dialog_window', (event) => {
     parent: mainWindow,
     modal: true,
     show: false,
-    icon: `${__dirname}/icons/white.png`,
+    icon: `${__dirname}/icons/warning2.png`,
     resizable: false,
     autoHideMenuBar: true,
     webPreferences: {

@@ -46,13 +46,21 @@ function iterateThroughUploadedFiles (uploadedFiles, filesListText) {
   utils.logToFile('In iterateThroughUploadedFiles')
 
   const badNames = []
+  let firstTimeFlag = false // флаг нужен, чтобы не ставить перенос строки перед первым названием
 
   for (const file of uploadedFiles.files) {
     globalFileIdNumber++
-    if (nameAlreadyInList(file.name)) {
-      badNames.push(" "+file.name)
-      continue
-    }
+
+      if (nameAlreadyInList(file.name)) {
+        if (!firstTimeFlag) {
+        firstTimeFlag = true
+        badNames.push(file.name)
+        continue
+      }
+      else {
+        badNames.push("<br/>"+file.name)
+        continue
+      }}
 
     filesListText += "<li id = 'divnum" + globalFileIdNumber + "'> "
     filesListText += file.name + ' ' +
