@@ -6,18 +6,28 @@
 
 </head>
 <body>
+<div id="error_container" style='display: none'>
+<div  id="error" class="error" style='display: none !important;'>
 
-
-
-
-    <div  id="warning" class="warning" style='display: none !important;'>
-        <div class="static_text_up"> Файлы </div>
-        <div id="warning_text" class="warning_text">
+        <div id="error_text" class="warning_text">
             An example warning alert with an icon
         </div>
 
+    </div></div>
+
+
+
+
+<div id="warning_container" style='display: none'>
+    <div  id="warning" class="warning" style='display: none !important;'>
+        <div class="static_text_up"> Файлы </div>
+        <div id="warning_text" class="warning_text">
+            An example warning alert
+        </div>
+
     </div>
-    <div class="static_text_down"> уже добавлены </div>
+    <div class="statiс_text_down"> уже добавлены </div>
+</div>
 
 </body>
 <script>
@@ -37,11 +47,11 @@ function putTextInDialog(document){
     console.log("type of dialog: "+`${type}`)
 
     preferredElement.style.display = 'block'
-    document.getElementById(`${type}_text`).innerHTML = typeAndTitleAndText[2];}
+    document.getElementById(`${type}_text`).innerHTML = typeAndTitleAndText[2];
+    document.getElementById(`${type}_container`).style.display = "block"}
 
 putTextInDialog(document)
 
-  // document.getElementById("close").addEventListener("click", function () {window.close();})
 
 </script>
 </html>

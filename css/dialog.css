@@ -18,9 +18,8 @@ body{
  .static_text_up{
     position:relative;
 }
- .static_text_down{
+ .statiс_text_down{
     position:relative;
     margin:0;
-    padding:0;
-    top: 15px;
+    padding-top:12px;
 }

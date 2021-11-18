@@ -64,7 +64,6 @@ ipcMain.on('dialog_window', (event) => {
     }
   })
 
-  // child.setMenu(null)
   child.setMinimizable(false)
   child.loadFile(`${__dirname}/dialog.html`)
   child.once('ready-to-show', () => {
