@@ -28,16 +28,17 @@ function hideLine (idNum) {
   rewrite()
 }
 function showDialogDuplicateFiles (badNames) {
+  // we concatenate empty string and array "badNames" to avoid error 'The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView.'
   utils.logToFile(`In showDialogDuplicateFiles, badNames: ${badNames}`)
 
   if (badNames.length === 1) {
     fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-      'warning??Упс!??' + badNames)
+       "" + badNames)
     ipcRenderer.sendSync('dialog_window')
   }
   if (badNames.length > 1) {
     fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-      'warning??Упс!??' + badNames)
+       "" + badNames)
     ipcRenderer.sendSync('dialog_window')
   }
 }

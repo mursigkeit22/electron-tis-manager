@@ -92,7 +92,9 @@ palette Olya
 #bc8e6c кнопка выбрать
 #906b42 граница кнопки выбрать
 #c39a7b разделитель
-
+====================
+css display
+https://stackoverflow.com/questions/19038799/why-is-there-an-unexplainable-gap-between-these-inline-block-div-elements
 
 
 

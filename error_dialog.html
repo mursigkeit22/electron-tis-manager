@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Error</title>
+    <link rel="stylesheet" href="css/error_dialog.css">
+</head>
+<body>
+
+
+        <div id="error_text" class="error_text">
+            An example error alert
+        </div>
+
+</body>
+
+<script>
+  const fs = require('fs');
+  const constants = require('./js_code/constants_js');
+  const utils = require('./js_code/utils')
+  require('./js_code/common_event_listeners');
+
+function putTextInDialog(document){
+  document.getElementById(`error_text`).innerHTML = fs.readFileSync(`${constants.PATHS.utilsPath}error_data.txt`, 'utf8');}
+
+putTextInDialog(document)
+
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="title">Упс!</title>
+    <link rel="stylesheet" href="css/warning_dialog.css">
+
+</head>
+<body>
+
+
+<div id="warning_container">
+    <div  id="warning" class="warning">
+        <div class="static_text_up"> Файлы </div>
+        <div id="warning_text" class="warning_text">
+            An example warning alert
+        </div>
+
+    </div>
+    <div class="statiс_text_down"> уже добавлены </div>
+</div>
+
+</body>
+<script>
+  const fs = require('fs');
+  const constants = require('./js_code/constants_js');
+  const utils = require('./js_code/utils')
+  require('./js_code/common_event_listeners');
+
+function putTextInDialog(document){
+  document.getElementById("warning_text").innerHTML = fs.readFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`, 'utf8');}
+
+putTextInDialog(document)
+
+
+</script>
+</html>

@@ -55,7 +55,7 @@ ipcMain.on('dialog_window', (event) => {
     parent: mainWindow,
     modal: true,
     show: false,
-    icon: `${__dirname}/icons/warning2.png`,
+    icon: `${__dirname}/icons/warning.png`,
     resizable: false,
     autoHideMenuBar: true,
     webPreferences: {
@@ -65,7 +65,32 @@ ipcMain.on('dialog_window', (event) => {
   })
 
   child.setMinimizable(false)
-  child.loadFile(`${__dirname}/dialog.html`)
+  child.loadFile(`${__dirname}/warning_dialog.html`)
+  child.once('ready-to-show', () => {
+    child.show()
+    event.returnValue = null
+  })
+})
+
+
+ipcMain.on('error_window', (event) => {
+  const child = new BrowserWindow({
+    width: 400,
+    height: 200,
+    parent: mainWindow,
+    modal: true,
+    show: false,
+    icon: `${__dirname}/icons/error.png`,
+    resizable: false,
+    autoHideMenuBar: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    }
+  })
+
+  child.setMinimizable(false)
+  child.loadFile(`${__dirname}/error_dialog.html`)
   child.once('ready-to-show', () => {
     child.show()
     event.returnValue = null
