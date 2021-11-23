@@ -72,7 +72,6 @@ ipcMain.on('dialog_window', (event) => {
   })
 })
 
-
 ipcMain.on('error_window', (event) => {
   const child = new BrowserWindow({
     width: 400,

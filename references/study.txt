@@ -43,6 +43,7 @@ https://jestjs.io/docs/getting-started
 ===========================
 PACKAGING
 electron-builder:
+yarn dist
 https://www.electron.build/
 https://stackoverflow.com/questions/51182226/electron-builder-is-not-bundling-the-python-files
 https://stackoverflow.com/questions/58043405/build-standalone-exe-from-electron-app-using-electron-builder

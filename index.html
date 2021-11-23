@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/done.css">
+  <meta charset="utf-8">
+  <title>Text-In-Scope-Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/done.css">
+
+
 </head>
-<body>
-    <div class="left_container"><div class="leftbox">
-        <button class="btn-mine"  type="button" id="1">Скрыть текст, выделенный <span style="background-color: #e3e370">лю</span><span style="background-color: #db9c9c">б</span><span style="background-color: lightgreen">ым</span> цветом
+
+<body >
+
+<label id='inputLabel' for="selectFiles" class="inputLabel">Выбрать файлы</label>
+
+<input type="file" id="selectFiles" multiple accept=".docx, .docm"
+       onchange="upload_helpers.writeFileNames()">
+
+<div id="format_info"> Доступные форматы: .docx и .docm</div>
+
+
+<div id="leftbox">
+<div class="d-grid gap-2">
+
+
+  <button class="btn-mine"  type="button" id="1">Скрыть текст, выделенный <span style="background-color: #e3e370">лю</span><span style="background-color: #db9c9c">б</span><span style="background-color: lightgreen">ым</span> цветом
   </button>
 
   <button class="btn-mine" type="button" id="2">Скрыть текст, который <u>НЕ</u> выделен никаким цветом </button>
@@ -31,29 +47,34 @@
 
   <button class="btn-mine"  type="button" id="7">Скрыть <del>зачеркнутый</del> текст
   </button>
-        <button class="btn-mine"  type="button" id="1.1">Скрыть текст, выделенный <span style="background-color: #e3e370">лю</span><span style="background-color: #db9c9c">б</span><span style="background-color: lightgreen">ым</span> цветом
-  </button>
 
-  <button class="btn-mine" type="button" id="2.1">Скрыть текст, который <u>НЕ</u> выделен никаким цветом </button>
+</div>
+</div>
 
-  <button class="btn-mine"  type="button" id="3.1"><span style="background-color: lightgreen">Выбрать цвет</span> и скрыть текст, выделенный этим цветом
-  </button>
+<ol type = "1" id="nameList"></ol>
 
-  <button class="btn-mine" type="button"  id="4.1">
-    <span style="background-color: lightgreen">Выбрать цвет</span> и скрыть текст, <u>НЕ</u> выделенный этим цветом
-  </button>
+<button id="go" class="btn-lg go" type="button">Выполнить!</button>
+
+<div id="wait" style='display: none;'>Пожалуйста, подождите, это может занять пару минут...</div>
 
 
-  <button class="btn-mine"  type="button" id="5.1">Скрыть текст, выделенный <i>курсивом</i>
-  </button>
 
-  <button class="btn-mine" type="button" id="6.1">
-    Скрыть текст, <u>НЕ</u> выделенный <i>курсивом</i>
-  </button>
-
-  <button class="btn-mine"  type="button" id="7.1">Скрыть <del>зачеркнутый</del> текст
-  </button>
-    </div></div><div class="right_container">trxt</div>
 
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script>
+
+  require('./js_code/index_event_listeners');
+  require('./js_code/common_event_listeners');
+
+
+  const upload_helpers = require("./js_code/upload_file_functions")
+  const fs = require('fs-extra')
+  const constants = require('./js_code/constants_js')
+  // const ipc = require('electron').ipcRenderer
+
+
+</script>
+
 </html>

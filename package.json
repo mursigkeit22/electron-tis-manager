@@ -39,7 +39,7 @@
     ],
     "win": {
       "target": "portable",
-      "icon": ".\\icons\\green2.png"
+      "icon": ".\\icons\\icon.png"
     },
     "portable": {
       "unicode": false,

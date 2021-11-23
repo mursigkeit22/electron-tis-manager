@@ -33,12 +33,12 @@ function showDialogDuplicateFiles (badNames) {
 
   if (badNames.length === 1) {
     fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-       "" + badNames)
+      '' + badNames)
     ipcRenderer.sendSync('dialog_window')
   }
   if (badNames.length > 1) {
     fs.writeFileSync(`${constants.PATHS.utilsPath}dialog_data.txt`,
-       "" + badNames)
+      '' + badNames)
     ipcRenderer.sendSync('dialog_window')
   }
 }
@@ -52,16 +52,16 @@ function iterateThroughUploadedFiles (uploadedFiles, filesListText) {
   for (const file of uploadedFiles.files) {
     globalFileIdNumber++
 
-      if (nameAlreadyInList(file.name)) {
-        if (!firstTimeFlag) {
+    if (nameAlreadyInList(file.name)) {
+      if (!firstTimeFlag) {
         firstTimeFlag = true
         badNames.push(file.name)
         continue
-      }
-      else {
-        badNames.push("<br/>"+file.name)
+      } else {
+        badNames.push('<br/>' + file.name)
         continue
-      }}
+      }
+    }
 
     filesListText += "<li id = 'divnum" + globalFileIdNumber + "'> "
     filesListText += file.name + ' ' +

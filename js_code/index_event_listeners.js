@@ -13,7 +13,6 @@ const options = {
 
 const Go = document.getElementById('go')
 Go.addEventListener('click', () => {
-  document.getElementById('nonexistent').style.display = 'none'
   if (!utils.checkIfFilesAdded()) { return }
   if (typeof task === 'undefined') { return }
   options.args.push(task)
